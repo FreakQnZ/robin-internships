@@ -5,36 +5,44 @@ import Link from 'next/link';
 import {SignOutButton, UserButton, useUser } from '@clerk/nextjs';
 import { PiSignOutBold } from "react-icons/pi";
 
-const NavbarHome = () => {
+const NavbarHome =  () => {
   const { isSignedIn, user, isLoaded } = useUser();
   const uId = user?.id;
 
-  const [isUserVerified, setIsUserVerified] = useState(null); // Track verification status
+  const [isUserVerified, setIsUserVerified] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function checkUserExists() {
+    setIsLoading(true)
+
     const res = await fetch(`http://localhost:3000/api/verify`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ userId: uId }),
-    })
+    }, { cache: 'no-store' });
     setIsUserVerified(await res.json());
+    setIsLoading(false)
   }
 
   useEffect(() => {
     checkUserExists();
   }, [uId]); 
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="flex lg:justify-between p-2 items-center w-full">
 
-      <div className=" absolute left-1/2 translate-x-[-50%] text-black font-bold m-2">
-      <span className=' lg:text-6xl text-4xl'>
-        <span className=' text-red-500'>R</span>ob<span className=' text-yellow-400'>in</span>
-      </span>
-      <span className=' font-bold lg:text-5xl text-xl'> internships</span>
-    </div>
+      <Link href="/" className=" absolute left-1/2 translate-x-[-50%] text-black font-bold m-2">
+        <span className=' lg:text-6xl text-4xl'>
+          <span className=' text-red-500'>R</span>ob<span className=' text-yellow-400'>in</span>
+        </span>
+        <span className=' font-bold lg:text-5xl text-xl'> internships</span>
+      </Link>
 
       <div className="hidden lg:block space-x-8 m-2">
         <Link href="/about" className="btn">About US</Link>
@@ -43,21 +51,34 @@ const NavbarHome = () => {
 
       {isSignedIn? (
         isUserVerified !== null && (
-          <div className="text-center">{isUserVerified?.success ? (
-            <div className="hidden lg:flex items-center space-x-8 m-2">
-              <Link href="/dashboard" className="btn">DashBoard</Link>
+          <div className="text-center">{isUserVerified?.success == true ? (
+            isUserVerified?.role == 'student' ? (
+              <div className="hidden lg:flex items-center space-x-8 m-2">
+              <Link href="/studentDashboard" className="btn">DashBoard</Link>
               <SignOutButton>
-                <div className=' flex items-center p-2 bg-error-content text-error cursor-pointer btn'>
+                <Link href="/" className=' flex items-center p-2 text-error cursor-pointer btn'>
                   <p className='pr-1'>Sign Out</p>
                   <PiSignOutBold />
-                </div>
+                </Link>
               </SignOutButton>
               <UserButton /> 
             </div>
+            ) : (
+              <div className="hidden lg:flex items-center space-x-8 m-2">
+              <Link href="/startupDashboard" className="btn btn-success">DashBoard</Link>
+              <SignOutButton>
+                <Link href="/" className=' flex items-center p-2 text-error cursor-pointer btn'>
+                  <p className='pr-1'>Sign Out</p>
+                  <PiSignOutBold />
+                </Link>
+              </SignOutButton>
+              <UserButton /> 
+              </div>
+            )
             
           ) : (
             <div className="hidden lg:flex items-center space-x-8 m-2">
-              <Link href="/register" className="btn">Get started</Link>
+              <Link href="/register" className="btn bg-">Get started</Link>
               <SignOutButton>
                 <Link href="/" className=' flex items-center p-2 text-error cursor-pointer btn'>
                   <p className='pr-1'>Sign Out</p>

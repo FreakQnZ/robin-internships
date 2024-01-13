@@ -1,29 +1,29 @@
 import { NextResponse } from 'next/server';
 import { userAll } from '../../utils/database/models/allusers/userall';
-import { studentAll } from '@/app/utils/database/models/student/studentAll';
 import { connectDB } from '@/app/utils/database/connect';
+import { startupAll } from '@/app/utils/database/models/startups/startupAll';
 
 export async function POST(request) {
   try {
     connectDB();
 
-    const { userId, name, college, email } = await request.json();
+    const { userId, name, desc, email } = await request.json();
 
     await userAll.create({
       userId,
-      role: 'student',
+      role: 'startup',
     });
 
-    await studentAll.create({
+    await startupAll.create({
       userId,
       name,
       email,
-      college,
+      desc,
       listings: [],
     });
 
     return NextResponse.json({
-      message: 'User and student added successfully',
+      message: 'User and startup added successfully',
       success: true,
     });
   } catch (error) {

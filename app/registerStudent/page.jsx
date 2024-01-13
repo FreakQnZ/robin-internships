@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import NavbarHome from '../components/navbarHome';
+import { useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation'
 
 function InputGroup1({
   label,
@@ -19,7 +21,7 @@ function InputGroup1({
         name={name}
         value={value}
         onChange={onChange}
-        required // Make the input field required
+        required 
         className={`peer block py-2.5 px-1 w-full text-sm text-gray-600 bg-transparent border-0 border-b-[2px] appearance-none focus:outline-none focus:ring-0 focus:border-[#FF6464] ${
           disabled ? "border-gray-300" : "border-gray-400"
         }`}
@@ -37,10 +39,18 @@ function InputGroup1({
 }
 
 const Page = () => {
+
+  const router = useRouter()
+
+  const { isSignedIn, user, isLoaded } = useUser();
+  const uId = user?.id;
+
   const [formData, setFormData] = useState({
+    userId : uId,
     name: '',
-    College: '',
+    college: '',
     email: '',
+    listing: [],
   });
 
   const handleChange = (e) => {
@@ -51,10 +61,20 @@ const Page = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Add additional logic here, such as sending data to a server
+    // console.log(formData);
+    const res = await fetch('http://localhost:3000/api/new', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    console.log(res);
+
+    router.push('/')
+
   };
 
   return (
@@ -68,7 +88,7 @@ const Page = () => {
         onChange={handleChange}
       />
       <InputGroup1
-        name="College"
+        name="college"
         label="College"
         value={formData.College}
         onChange={handleChange}

@@ -18,7 +18,8 @@ export async function POST(request) {
 
     return NextResponse.json({
       message: "User verified",
-      success: true
+      success: true,
+      role: curr_user.role
     })
     
   } catch (error) {
