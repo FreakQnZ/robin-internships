@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en" data-theme="cupcake">
         <body suppressHydrationWarning={true}>
-          <div className=' h-dvh flex flex-col justify-between'>
+          <div className=' min-h-dvh flex flex-col justify-between'>
             {children}
             <Footer/>
           </div>

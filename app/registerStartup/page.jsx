@@ -63,7 +63,7 @@ const Page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(formData);
+    console.log(formData);
     const res = await fetch('http://localhost:3000/api/newStartup', {
       method: 'POST',
       headers: {

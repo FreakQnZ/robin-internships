@@ -1,20 +1,14 @@
-"use client"
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import {SignOutButton, UserButton, useUser } from '@clerk/nextjs';
+import {SignOutButton, UserButton, auth } from '@clerk/nextjs';
 import { PiSignOutBold } from "react-icons/pi";
 
-const NavbarHome =  () => {
-  const { isSignedIn, user, isLoaded } = useUser();
-  const uId = user?.id;
+const NavbarHome = async  () => {
+  const {userId} = auth();
+  const uId = userId;
 
-  const [isUserVerified, setIsUserVerified] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   async function checkUserExists() {
-    setIsLoading(true)
-
     const res = await fetch(`http://localhost:3000/api/verify`, {
       method: 'POST',
       headers: {
@@ -22,17 +16,9 @@ const NavbarHome =  () => {
       },
       body: JSON.stringify({ userId: uId }),
     }, { cache: 'no-store' });
-    setIsUserVerified(await res.json());
-    setIsLoading(false)
+    return res.json();
   }
-
-  useEffect(() => {
-    checkUserExists();
-  }, [uId]); 
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const isUserVerified = await checkUserExists()
 
   return (
     <div className="flex lg:justify-between p-2 items-center w-full">
@@ -49,7 +35,7 @@ const NavbarHome =  () => {
         <Link href="/contact" className="btn">Contact</Link>
       </div>
 
-      {isSignedIn? (
+      {uId? (
         isUserVerified !== null && (
           <div className="text-center">{isUserVerified?.success == true ? (
             isUserVerified?.role == 'student' ? (
@@ -65,7 +51,7 @@ const NavbarHome =  () => {
             </div>
             ) : (
               <div className="hidden lg:flex items-center space-x-8 m-2">
-              <Link href="/startupDashboard" className="btn btn-success">DashBoard</Link>
+              <Link href="/startupDashboard" className="btn">DashBoard</Link>
               <SignOutButton>
                 <Link href="/" className=' flex items-center p-2 text-error cursor-pointer btn'>
                   <p className='pr-1'>Sign Out</p>
@@ -78,7 +64,7 @@ const NavbarHome =  () => {
             
           ) : (
             <div className="hidden lg:flex items-center space-x-8 m-2">
-              <Link href="/register" className="btn bg-">Get started</Link>
+              <Link href="/register" className="btn btn-success">Get started</Link>
               <SignOutButton>
                 <Link href="/" className=' flex items-center p-2 text-error cursor-pointer btn'>
                   <p className='pr-1'>Sign Out</p>

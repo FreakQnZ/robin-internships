@@ -1,6 +1,10 @@
 import  mongoose  from "mongoose";
 
 const subsubTaskSchema = new mongoose.Schema({
+  student_id : {
+    type: String,
+    required: true,
+  },
   intern_name : {
     type: String,
     required: true,
@@ -27,6 +31,14 @@ const subTaskSchema = new mongoose.Schema({
   stipend: {
     type: Number,
     default: 0, 
+  },
+  duration: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
   },
   applicants: [
     {
