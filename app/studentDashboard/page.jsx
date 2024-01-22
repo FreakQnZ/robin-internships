@@ -1,6 +1,5 @@
 import React from 'react'
 import StudentNavbar from '../components/student/studentNavbar'
-import Link from 'next/link'
 import ListingsStudent from '../components/student/listingsStudent'
 import {currentUser} from '@clerk/nextjs';
 import Image from 'next/image'
@@ -10,9 +9,10 @@ import ListingStatus from '../components/student/status';
 
 const StudentDB = async  () => {
   const user = await currentUser();
+  
   return (
     <div className='h-dvh w-full flex'>
-      <StudentNavbar/>
+      <StudentNavbar act="home"/>
       <div className=' h-full w-full flex'>
         <div className=' h-full w-1/2 flex flex-col'>
           <div className=' flex flex-col gap-2 h-1/2 p-5'>

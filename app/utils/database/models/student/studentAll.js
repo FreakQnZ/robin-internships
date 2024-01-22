@@ -15,12 +15,51 @@ const subTaskSchema = new mongoose.Schema({
   },
 });
 
+const LorSchema = new mongoose.Schema({
+  lorLink: {
+    type: String,
+    required: true,
+  },
+})
+
 const parentSchema = new mongoose.Schema({
   userId: {
     type: String,
     required: true,
   },
-  name: {
+  firstName: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  phoneNumber: {
+    type: Number,
+    required: true,
+  },
+  university: {
+    type: String,
+    required: true,
+  },
+  course: {
+    type: String,
+    required: true,
+  },
+  Domains: {
+    type: String,
+    required: true,
+  },
+  yearOfGraduation: {
+    type: Number,
+    required: true,
+  },
+  lastName: {
     type: String,
     required: true,
   },
@@ -32,6 +71,19 @@ const parentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  resume: {
+    type: String,
+    required: true,
+  },
+  portfolio: {
+    type: String,
+    required: true,
+  },
+  Lor: [
+    {
+      type: LorSchema,
+    },
+  ],
   listings: [
     {
       type: subTaskSchema,
