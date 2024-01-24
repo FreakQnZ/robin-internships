@@ -1,7 +1,11 @@
 import  mongoose  from "mongoose";
 
 const subTaskSchema = new mongoose.Schema({
-  CompanyId: {
+  startupId: {
+    type: String,
+    required: true,
+  },
+  startupName : {
     type: String,
     required: true,
   },
@@ -9,10 +13,15 @@ const subTaskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  listingName: {
+    type: String,
+    required: true,
+  },
   status: {
     type: Number,
     default: 0, 
   },
+
 });
 
 const LorSchema = new mongoose.Schema({
