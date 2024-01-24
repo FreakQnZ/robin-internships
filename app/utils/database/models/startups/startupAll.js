@@ -13,7 +13,7 @@ const subsubTaskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  inter_college : {
+  intern_college : {
     type: String,
     required: true,
   },
@@ -40,6 +40,18 @@ const subTaskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  requirements : {
+    type: String,
+    required : true,
+  },
+  email : {
+    type : String,
+    required : true,
+  },
+  internsRequired : {
+    type : Number,
+    required : true,
+  },
   applicants: [
     {
       type: subsubTaskSchema,
@@ -63,6 +75,22 @@ const parentSchema = new mongoose.Schema({
   desc : {
     type: String,
     required: true,
+  },
+  domain : {
+    type: String,
+    required: true,
+  },
+  phno : {
+    type : String,
+    required : true,
+  },
+  insta : {
+    type: String,
+    required : true,
+  },
+  linkedin : {
+    type: String,
+    required : true,
   },
   listings: [
     {
