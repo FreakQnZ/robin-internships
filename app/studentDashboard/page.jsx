@@ -9,7 +9,6 @@ import ListingStatus from '../components/student/status';
 
 const StudentDB = async  () => {
   const user = await currentUser();
-  console.log("in user");
   return (
     <div className='h-dvh w-full flex'>
       <StudentNavbar act="home"/>
