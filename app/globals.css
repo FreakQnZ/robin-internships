@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-.clerk-user-button {
+/* .clerk-user-button {
   width: 64px;
   height: 64px;
 }
@@ -12,4 +12,14 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
+} */
+
+.cl-internal-b3fm6y {
+  display: none;
+}
+
+.cl-card {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }

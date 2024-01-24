@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import {SignOutButton, UserButton, auth } from '@clerk/nextjs';
+import {SignOutButton, UserButton, currentUser  } from '@clerk/nextjs';
 import { PiSignOutBold } from "react-icons/pi";
 
 const NavbarHome = async  () => {
-  const {userId} = auth();
-  const uId = userId;
+  // const {userId} = auth();
+  // const uId = userId;
+
+  const user = await currentUser();
+  const uId = user?.id;
 
 
   async function checkUserExists() {
