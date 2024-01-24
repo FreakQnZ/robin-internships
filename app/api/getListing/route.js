@@ -1,13 +1,18 @@
 import { NextResponse } from 'next/server';
 import { connectDB } from '@/app/utils/database/connect';
 import { startupAll } from '@/app/utils/database/models/startups/startupAll';
+import { studentAll } from '@/app/utils/database/models/student/studentAll';
 
-export async function GET(request) {
+export async function POST(request) {
   try {
     connectDB();
 
+    const {userId} = await request.json();
+
     // Fetch all records from startupAll
     const allStartups = await startupAll.find();
+    const student = await studentAll.findOne({userId});
+
 
     // Iterate through each record and extract listings for startups with non-empty listings
     const allListings = allStartups

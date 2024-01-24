@@ -2,12 +2,12 @@ import { NextResponse } from 'next/server';
 import { connectDB } from '@/app/utils/database/connect';
 import { startupAll } from '@/app/utils/database/models/startups/startupAll';
 
-export async function GET(request) {
+export async function POST(request) {
   try {
     connectDB();
 
     // Get the userId from the query parameters
-    const { userId } = request.json();
+    const { userId } = await request.json();
 
     // Find the startup in the database using the userId
     const startup = await startupAll.findOne({ userId });
@@ -21,12 +21,11 @@ export async function GET(request) {
     }
 
     // Extract the startup description
-    const { desc } = startup;
+    // const desc = startup.desc;
+    const {desc} = startup
 
     return NextResponse.json({
-      data: {
-        desc, // Include startup description
-      },
+      data: desc,
       success: true,
     });
   } catch (error) {

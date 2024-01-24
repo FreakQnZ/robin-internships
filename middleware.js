@@ -4,10 +4,9 @@ import { authMiddleware } from "@clerk/nextjs";
 // Please edit this to allow other routes to be public as needed.
 // See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
 export default authMiddleware({
-  publicRoutes: ['/', '/about', '/contact','api/studentDetails','api/getListing','api/addResume'],
+  publicRoutes: ['/', '/about', '/contact' ],
   // ignoredRoutes: ['/api/all', '/api/new', '/api/update', '/api/delete'],
-  ignoredRoutes: ['/api/verify', 'api/new', 'api/newStartup'],
-  apiRoutes: []
+  ignoredRoutes: ['/api/verify', 'api/new', 'api/newStartup', '/api/getAboutUs', '/api/getListing']
 });
  
 export const config = {

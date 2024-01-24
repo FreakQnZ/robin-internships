@@ -8,7 +8,22 @@ import Link from 'next/link'
 
 
 const StudentDB = async  () => {
+  console.log("hello")
   const user = await currentUser();
+  const uId = user?.id;
+
+  async function getAboutUs() {
+    const res = await fetch(`http://localhost:3000/api/getAboutUs`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: uId }),
+    }, { cache: 'no-store' });
+    return res.json();
+  }
+  const retData = await getAboutUs()
+  console.log(retData)
   return (
     <div className='h-dvh w-full flex'>
       <StartupNavbar/>
@@ -20,6 +35,7 @@ const StudentDB = async  () => {
         <div className=' w-full grid h-5/6 grid-cols-6 gap-2 '>
           <div className=' col-span-2 bg-base-300 ml-5 m-2 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>About the startup</p>
+            <p>{retData?.data}</p>
           </div>
           <div className=' col-span-4 bg-base-300 m-2 mr-5 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>Current Openings</p>

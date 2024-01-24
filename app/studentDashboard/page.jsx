@@ -8,6 +8,12 @@ import Lor from '../components/student/lor';
 import ListingStatus from '../components/student/status';
 
 const StudentDB = async  () => {
+// async function getListings() {
+//     const res = await fetch("http://localhost:3000/api/getListing", { cache: 'no-store' });
+//     return res.json();
+//   }
+  // const listings = await getListings()
+  // console.log(listings)
   const user = await currentUser();
   return (
     <div className='h-dvh w-full flex'>
