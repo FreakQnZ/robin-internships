@@ -7,7 +7,25 @@ export async function POST(request) {
   try {
     connectDB();
 
-    const { userId, name, college, email } = await request.json();
+    const {
+      userId,
+      firstName,
+      lastName,
+      college,
+      email,
+      university,
+      course,
+      Domains,
+      yearOfGraduation,
+      phoneNumber,
+      gender,
+      linkedin,
+      resume,
+      portfolio,
+      age,
+      Lor = [],
+      listings = [],
+    } = await request.json();
 
     await userAll.create({
       userId,
@@ -16,10 +34,22 @@ export async function POST(request) {
 
     await studentAll.create({
       userId,
-      name,
+      firstName,
+      lastName,
       email,
       college,
-      listings: [],
+      university,
+      course,
+      gender,
+      phoneNumber,
+      linkedin,
+      Domains,
+      yearOfGraduation,
+      resume,
+      portfolio,
+      age,
+      Lor,
+      listings,
     });
 
     return NextResponse.json({

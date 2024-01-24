@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import NavbarHome from '../components/navbarHome';
+// import NavbarHome from '../components/navbarHome';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation'
 
@@ -50,7 +50,10 @@ const Page = () => {
     name: '',
     desc: '',
     email: '',
-    listings: []
+    domain: '',
+    phno: '',
+    insta: '',
+    linkedin: '',
   });
 
   const handleChange = (e) => {
@@ -63,7 +66,7 @@ const Page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
     const res = await fetch('http://localhost:3000/api/newStartup', {
       method: 'POST',
       headers: {
@@ -73,13 +76,17 @@ const Page = () => {
     })
     console.log(res);
 
-    router.push('/')
+    router.push('/startupDashboard');
   };
 
   return (
-    <div className=' flex flex-col h-full gap-10'>
-      <NavbarHome/>
-    <form onSubmit={handleSubmit} className="flex flex-col bg-white w-full p-5 sm:p-10 gap-8 rounded-md">
+    <div className=' flex flex-col items-center h-full'>
+      {/* <NavbarHome/> */}
+      <div className="navbar bg-blue-200">
+        <a className="btn btn-ghost text-2xl">Startup Onboarding</a>
+      </div>
+    <form onSubmit={handleSubmit} className="flex flex-col border shadow-lg w-1/2 p-5 sm:p-10 gap-8 rounded-md m-5 ">
+      <p className=' text-center text-xl font-semibold'>Start your Journey now!</p>
       <InputGroup1
         name="name"
         label="Startup Name"
@@ -89,7 +96,7 @@ const Page = () => {
       <InputGroup1
         name="desc"
         label="Startup Description"
-        value={formData.College}
+        value={formData.desc}
         onChange={handleChange}
       />
       <InputGroup1
@@ -97,6 +104,31 @@ const Page = () => {
         label="Email *"
         type="email"
         value={formData.email}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="domain"
+        label="Domain of work"
+        value={formData.domain}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="phno"
+        label="Contact Number"
+        type="tel"
+        value={formData.phno}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="insta"
+        label="Instagram"
+        value={formData.insta}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="linkedin"
+        label="Linkedin"
+        value={formData.linkedin}
         onChange={handleChange}
       />
 
