@@ -6,7 +6,7 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   publicRoutes: ['/', '/about', '/contact' ],
   // ignoredRoutes: ['/api/all', '/api/new', '/api/update', '/api/delete'],
-  ignoredRoutes: ['/api/verify', 'api/new', 'api/newStartup', '/api/getAboutUs', '/api/getListing','/api/addLor','/api/addResume','/api/addPortfolio','/api/applyForListing']
+  ignoredRoutes: ['/api/verify', 'api/new', 'api/newStartup', '/api/getAboutUs', '/api/getListing','/api/addLor','/api/addResume','/api/addPortfolio','/api/applyForListing','/api/getListingsForStartup']
 });
  
 export const config = {

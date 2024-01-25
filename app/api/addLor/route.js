@@ -20,7 +20,7 @@ export async function POST(request) {
     }
 
     // Add the new Lor to the student's Lor array
-    student.Lor.push(Lor);
+    student.Lor.push({lorLink : Lor});
 
     // Save the updated student document
     await student.save();

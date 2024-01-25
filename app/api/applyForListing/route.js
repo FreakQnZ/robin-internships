@@ -9,19 +9,17 @@ export async function POST(request) {
   try {
     connectDB();
 
-    const { userId, listingId, studentName, studentEmail, studentCollege } = await request.json();
+    const { userId, startupId, listingId, studentName, studentEmail, studentCollege } = await request.json();
 
     // Find the student in the database using the userId
     const student = await studentAll.findOne({ userId });
 
-    // Find the startup by listingId
-    const startup = await startupAll.findOne({
-      'listings._id': listingId,
-    });
+    // Find the startup by userId
+    const startup = await startupAll.findOne({ userId: startupId });
 
-    if (!startup) {
+    if (!student || !startup) {
       return NextResponse.json({
-        message: 'Listing not found',
+        message: 'Student or startup not found',
         success: false,
       });
     }
@@ -50,17 +48,22 @@ export async function POST(request) {
     // Save the updated startup
     await startup.save();
 
-    // Add the listingId and StartupId to the listings array of the student
-    student.listings.push({
+    // Check if the listing is already present in the student's listings array
+    const isListingPresent = student.listings.some((studentListing) => studentListing.listingId === listingId);
+
+    // If the listing is not present, add it to the student's listings array
+    if (!isListingPresent) {
+      student.listings.push({
         listingId,
-        StartupId: startup._id,
-        listingName: startup.listing.lname, // Assuming the name is stored in 'lname'
+        startupId: startup.userId,
+        listingName: listing.lname, // Assuming the name is stored in 'lname'
         startupName: startup.name,
         status: 0,
-    });
+      });
 
-    // Save the updated student document
-    await student.save();
+      // Save the updated student document
+      await student.save();
+    }
 
     return NextResponse.json({
       message: 'Application submitted successfully',
