@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const RegisterPage = () => {
   return (
-    <div className=' flex flex-col justify-between h-full'>
+    <div className=' flex flex-col justify-between h-dvh'>
       <NavbarHome/>
       <div className="flex h-full flex-col w-full lg:flex-row p-2 ">
         <div className="grid flex-grow h-full card  rounded-box place-items-center">

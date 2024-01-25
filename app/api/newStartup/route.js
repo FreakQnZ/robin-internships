@@ -7,7 +7,7 @@ export async function POST(request) {
   try {
     connectDB();
 
-    const { userId, name, desc, email } = await request.json();
+    const { userId, name, desc, email, domain, phno, insta, linkedin } = await request.json();
 
     await userAll.create({
       userId,
@@ -19,6 +19,10 @@ export async function POST(request) {
       name,
       email,
       desc,
+      domain,
+      phno,
+      insta,
+      linkedin,
       listings: [],
     });
 

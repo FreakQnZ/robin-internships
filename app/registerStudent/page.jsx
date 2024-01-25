@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import NavbarHome from '../components/navbarHome';
+// import NavbarHome from '../components/navbarHome';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation'
 
@@ -21,7 +21,7 @@ function InputGroup1({
         name={name}
         value={value}
         onChange={onChange}
-        required 
+        required
         className={`peer block py-2.5 px-1 w-full text-sm text-gray-600 bg-transparent border-0 border-b-[2px] appearance-none focus:outline-none focus:ring-0 focus:border-[#FF6464] ${
           disabled ? "border-gray-300" : "border-gray-400"
         }`}
@@ -44,13 +44,25 @@ const Page = () => {
 
   const { isSignedIn, user, isLoaded } = useUser();
   const uId = user?.id;
+  const fname = user?.firstName
+  const lname = user?.lastName
 
   const [formData, setFormData] = useState({
     userId : uId,
-    name: '',
-    college: '',
+    firstName: fname,
+    lastName: lname,
+    age: 0,
+    gender: '',
+    phoneNumber: '',
+    university: '',
+    course: '',
+    Domains: 0,
+    yearOfGraduation: 0,
     email: '',
-    listing: [],
+    college : '',
+    resume: 'example',
+    linkedin: '',
+    portfolio: 'example',
   });
 
   const handleChange = (e) => {
@@ -73,31 +85,79 @@ const Page = () => {
     })
     console.log(res);
 
-    router.push('/')
-
+    router.push('/studentDashboard')
   };
 
   return (
-    <div className=' flex flex-col h-full gap-10'>
-      <NavbarHome/>
-    <form onSubmit={handleSubmit} className="flex flex-col bg-white w-full p-5 sm:p-10 gap-8 rounded-md">
+    <div className=' flex flex-col items-center h-full'>
+      {/* <NavbarHome/> */}
+      <div className="navbar bg-blue-200">
+        <a className="btn btn-ghost text-2xl">Student Onboarding</a>
+      </div>
+    <form onSubmit={handleSubmit} className="flex flex-col border shadow-lg w-1/2 p-5 sm:p-10 gap-8 rounded-md m-5 ">
+      <p className=' text-center text-xl font-semibold'>Start your Journey now!</p>
       <InputGroup1
-        name="name"
-        label="Name"
-        value={formData.name}
+        name="age"
+        label="Age"
+        type="number"
+        value={formData.age}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="gender"
+        label="Gender"
+        value={formData.gender}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="email"
+        label="Email"
+        type="email"
+        value={formData.email}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="phoneNumber"
+        label="Contact Number"
+        type="tel"
+        value={formData.phoneNumber}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="university"
+        label="University"
+        value={formData.university}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="course"
+        label="Course / Degree"
+        value={formData.course}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="Domains"
+        label="Domains worked in"
+        value={formData.Domains}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="linkedin"
+        label="Linkedin"
+        value={formData.linkedin}
+        onChange={handleChange}
+      />
+      <InputGroup1
+        name="yearOfGraduation"
+        label="Year of Graduation"
+        type="number"
+        value={formData.yearOfGraduation}
         onChange={handleChange}
       />
       <InputGroup1
         name="college"
         label="College"
-        value={formData.College}
-        onChange={handleChange}
-      />
-      <InputGroup1
-        name="email"
-        label="Email *"
-        type="email"
-        value={formData.email}
+        value={formData.college}
         onChange={handleChange}
       />
 

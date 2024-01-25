@@ -40,6 +40,10 @@ const parentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  lastName: {
+    type: String,
+    required: true,
+  },
   age: {
     type: Number,
     required: true,
@@ -62,10 +66,6 @@ const parentSchema = new mongoose.Schema({
   },
   yearOfGraduation: {
     type: Number,
-    required: true,
-  },
-  lastName: {
-    type: String,
     required: true,
   },
   email: {
