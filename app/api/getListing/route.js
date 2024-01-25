@@ -65,7 +65,6 @@ export async function POST(request) {
             startDate,
             email,
             internsRequired,
-            applicants: listingApplicants,
           };
         });
 

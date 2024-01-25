@@ -5,15 +5,15 @@ const subsubTaskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  intern_name : {
+  student_name : {
     type: String,
     required: true,
   },
-  intern_email : {
+  student_email : {
     type: String,
     required: true,
   },
-  intern_college : {
+  student_college : {
     type: String,
     required: true,
   },

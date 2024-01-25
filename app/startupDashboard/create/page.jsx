@@ -54,7 +54,9 @@ const Page = () => {
     domain: '',
     stipend: '',
     duration: '',
-    applicants: [],
+    email : '',
+    requirements : '',
+    internsRequired : '',
   });
 
   const handleChange = (e) => {
@@ -68,16 +70,16 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    // const res = await fetch('http://localhost:3000/api/new', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    // console.log(res);
+    const res = await fetch('http://localhost:3000/api/createListing', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    console.log(res);
 
-    // router.push('/startupDashboard')
+    router.push('/startupDashboard')
 
   };
 
@@ -92,34 +94,55 @@ const Page = () => {
           <InputGroup1
             name="lname"
             label="Name of the Listing"
-            value={formData.name}
+            value={formData.lname}
             onChange={handleChange}
           />
           <InputGroup1
             name="domain"
             label="Internship Domain"
-            value={formData.College}
+            value={formData.domain}
             onChange={handleChange}
           />
           <InputGroup1
             name="stipend"
             label="Stipend in Rupees"
             type="number"
-            value={formData.email}
+            value={formData.stipend}
             onChange={handleChange}
           />
           <InputGroup1
             name="duration"
             label="Internship Duration"
-            value={formData.College}
+            value={formData.duration}
             onChange={handleChange}
           />
           <InputGroup1
             name="description"
             label="Internship Description"
-            value={formData.College}
+            value={formData.description}
             onChange={handleChange}
           />
+          <InputGroup1
+            name="requirements"
+            label="Internship requirements"
+            value={formData.requirements}
+            onChange={handleChange}
+          />
+          <InputGroup1
+            name="email"
+            label="email of your startup"
+            type = "email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <InputGroup1
+            name="internsRequired"
+            label="Interns Required"
+            type = "number"
+            value={formData.internsRequired}
+            onChange={handleChange}
+          />
+          
 
           <button type="submit" className=" btn bg-blue-400 hover:bg-blue-300">Create Listing</button>
         </form>
