@@ -52,10 +52,6 @@ const parentSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  university: {
-    type: String,
-    required: true,
-  },
   course: {
     type: String,
     required: true,

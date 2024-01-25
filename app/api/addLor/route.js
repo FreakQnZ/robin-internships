@@ -4,9 +4,9 @@ import { connectDB } from '@/app/utils/database/connect';
 
 export async function POST(request) {
   try {
-    const { userId, Lor } = await request.json();
-
     connectDB();
+
+    const { userId, Lor } = await request.json();
 
     // Find the student in the database using the userId
     const student = await studentAll.findOne({ userId });
