@@ -1,6 +1,5 @@
 import React from 'react'
 import NavbarHome from '../components/navbarHome'
-import Footer from '../components/footer'
 import Link from 'next/link'
 
 const RegisterPage = () => {

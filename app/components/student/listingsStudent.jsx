@@ -25,7 +25,7 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
   };
 
   async function applyForListing() {
-    const result = await fetch(`http://localhost:3000/api/applyForListing`, {
+    const result = await fetch(`/api/applyForListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -70,7 +70,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    const res = await fetch('http://localhost:3000/api/createListing', {
+    const res = await fetch('/api/createListing', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

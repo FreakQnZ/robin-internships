@@ -12,7 +12,7 @@ const StudentDB = async  ({params}) => {
 
   const user = params.viewStudentId;
   async function getStudentDetails() {
-    const result = await fetch(`http://localhost:3000/api/studentDetails`, {
+    const result = await fetch(`/api/studentDetails`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

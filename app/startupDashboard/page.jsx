@@ -13,7 +13,7 @@ const StudentDB = async  () => {
   const uId = user?.id;
 
   async function getListings() {
-    const result = await fetch(`http://localhost:3000/api/getListingsForStartup`, {
+    const result = await fetch(`/api/getListingsForStartup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const StudentDB = async  () => {
   }
 
   async function getAboutUs() {
-    const res = await fetch(`http://localhost:3000/api/getAboutUs`, {
+    const res = await fetch(`/api/getAboutUs`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

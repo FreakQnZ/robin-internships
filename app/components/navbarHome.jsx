@@ -9,7 +9,7 @@ const Navbar = async () => {
     const uId = user?.id;
 
     async function checkUserExists() {
-        const res = await fetch(`http://localhost:3000/api/verify`, {
+        const res = await fetch(`/api/verify`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const Navbar = async () => {
             </div>
             ) : (
                 <div className='flex space-x-6 pr-6'>
-                <Link href="/startupDashboard" className="btn btn btn-success hover:text-white w-40">Dashboard</Link>
+                <Link href="/startupDashboard" className="btn btn-success hover:text-white w-40">Dashboard</Link>
                 <SignOutButton>
                 <Link href="/" className=' flex items-center p-2 text-error cursor-pointer btn'>
                   <p className='pr-1'>Sign Out</p>
