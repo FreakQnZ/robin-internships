@@ -9,7 +9,7 @@ const Navbar = async () => {
     const uId = user?.id;
 
     async function checkUserExists() {
-        const res = await fetch(`/api/verify`, {
+        const res = await fetch(`/verify`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
