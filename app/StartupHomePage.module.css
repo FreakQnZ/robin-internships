@@ -1,0 +1,170 @@
+.heroContainer{
+    display: flex;
+    background-color: white;
+    gap:10px;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    font-family: 'Poppins';
+}
+
+.heroImageContainer{
+    flex:1;
+    position: relative;
+}
+
+.heroImage{
+    width: 500px;
+    height: 500px;
+}
+.heroTextContainer{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    justify-content: center;
+    padding-left: 100px;
+    letter-spacing: 1px;
+    font-family: 'Poppins';
+    
+}
+
+.heroTitle{
+    font-size: 50px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    gap:0px;
+    padding-left: 70px;
+
+}
+
+.heroDescription{
+    font-size: 18px;
+    font-weight: 400;
+    padding-left: 75px;
+    padding-bottom: 20px;
+}
+
+.heroButton{
+    align-items: center;
+    justify-content: center;
+    padding-left: 75px;
+    font-family: 'Poppins';
+}
+
+
+.statsContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:100px;
+    background-color: #fff;
+    padding-top: 138px;
+    padding-bottom: 50px;
+}
+
+.infoItem{
+    display: flex;
+    flex-direction: column;
+    gap :10px;
+}
+
+.infoTitle{
+    font-size: 40px;
+    font-weight: 600;
+    padding-left: 55px;
+}
+
+.infoDescription{
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.informationContainer{
+    background-color: #c8edfd;
+    display: flex;
+    width: 1440px;
+    padding-top: 50px;
+    font-family: 'Poppins';
+}
+
+.informationImageContainer{
+    flex:1;
+    padding-left: 120px;
+}
+
+.informationTextContainer{
+    flex:1;
+    font-family: 'Poppins';
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+    padding-top: 20px;
+    padding-left: 40px;
+}
+
+.informationTitle{
+    font-family: 'Poppins';
+    display: flex;
+    gap: 1px;
+    font-size: 40px;
+    width: 400px;
+    word-spacing: 1px;
+    font-weight: 600;
+    padding-bottom: 20px;
+    padding-top: 100px;
+}
+
+.informationDescription{
+    font-size: 20px ;
+    font-weight: 400;
+    width: 390px;
+    padding-bottom: 30px;
+}
+
+.informationButton{
+    padding-bottom: 100px;
+}
+
+.sustainableContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #c8edfd;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.sustainableTitle{
+    font-size: 50px;
+    font-weight: 700;
+    color: black;
+    word-spacing: 13px;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+.sustainableDescription{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.trustedByContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.trustedByTitle{
+    font-size: 50px;
+    font-weight: 600;
+    color: black;
+    word-spacing: 13px;
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+
+.trustedByLogoContainer{
+    display: flex;
+    gap:100px;
+}

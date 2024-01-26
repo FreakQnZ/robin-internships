@@ -1,6 +1,7 @@
 import Footer from './components/footer'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
+import Navbar from './components/navbarHome'
 
 
 export const metadata = {
