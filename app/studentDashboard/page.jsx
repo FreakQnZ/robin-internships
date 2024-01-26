@@ -8,13 +8,21 @@ import Lor from '../components/student/lor';
 import ListingStatus from '../components/student/status';
 
 const StudentDB = async  () => {
-// async function getListings() {
-//     const res = await fetch("http://localhost:3000/api/getListing", { cache: 'no-store' });
-//     return res.json();
-//   }
-  // const listings = await getListings()
-  // console.log(listings)
+
   const user = await currentUser();
+  const uId = user?.id;
+  async function getStudentDetails() {
+    const result = await fetch(`http://localhost:3000/api/studentDetails`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: uId}),
+    }, { cache: 'no-store' });
+    return result.json();
+  }
+  
+  const details = await getStudentDetails()
   return (
     <div className='h-dvh w-full flex'>
       <StudentNavbar act="home"/>
@@ -25,14 +33,14 @@ const StudentDB = async  () => {
               <div className=' w-48 h-48 overflow-hidden rounded-full'><Image src={user?.imageUrl} alt="student" width={200} height={200}/></div>
               <div className='flex flex-col gap-6'>
                 <p className=' text-2xl font-bold'>{user?.firstName } {user?.lastName}</p>
-                <div className='btn btn-wide btn-primary'>Student Resume</div>
-                <div className='btn btn-wide btn-primary'>Portfolio</div>
+                <a href={details?.data?.student?.resume} target='_blank' className='btn btn-wide btn-primary'>Student Resume</a>
+                <a href={details?.data?.student?.portfolio} target='_blank' className='btn btn-wide btn-primary'>Portfolio</a>
               </div>
             </div>
             <Stats/>
           </div>
           <div className=' h-1/2 p-5'>
-            <Lor/>
+            <Lor list={details?.data?.student?.Lor}/>
           </div>
         </div>
         <div className=' h-full w-1/2'>

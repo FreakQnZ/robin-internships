@@ -12,6 +12,17 @@ const StudentDB = async  () => {
   const user = await currentUser();
   const uId = user?.id;
 
+  async function getListings() {
+    const result = await fetch(`http://localhost:3000/api/getListingsForStartup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: uId }),
+    }, { cache: 'no-store' });
+    return result.json();
+  }
+
   async function getAboutUs() {
     const res = await fetch(`http://localhost:3000/api/getAboutUs`, {
       method: 'POST',
@@ -22,8 +33,13 @@ const StudentDB = async  () => {
     }, { cache: 'no-store' });
     return res.json();
   }
-  const retData = await getAboutUs()
-  console.log(retData)
+
+  const retDataAbout = await getAboutUs()
+  console.log(retDataAbout) 
+
+  const listings = await getListings()
+  console.log(listings)
+
   return (
     <div className='h-dvh w-full flex'>
       <StartupNavbar/>
@@ -33,14 +49,13 @@ const StudentDB = async  () => {
           <p className=' text-2xl font-bold'>{user?.firstName } {user?.lastName}</p>
         </div>
         <div className=' w-full grid h-5/6 grid-cols-6 gap-2 '>
-          <div className=' col-span-2 bg-base-300 ml-5 m-2 rounded-box'>
+          <div className=' overflow-y-scroll col-span-2 bg-base-300 ml-5 m-2 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>About the startup</p>
-            <p>{retData?.data}</p>
+            <p className='p-5 text-lg'>{retDataAbout?.data}</p>
           </div>
           <div className=' col-span-4 bg-base-300 m-2 mr-5 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>Current Openings</p>
-            <ListingsCard/>
-            <ListingsCard/>
+            <ListingsCard listings={listings.data} />
           </div>
           <div className=' col-span-3 bg-base-300 ml-5 m-2 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>Project directory ( recent job roles in the company)</p>

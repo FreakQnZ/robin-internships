@@ -17,7 +17,7 @@ const StudentNavbar = (props) => {
       </Link>
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn btn-ghost text-3xl ">
+          <div tabIndex={0} role="button" className={props.act === 'utils' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
             <CgProfile />
           </div>
           <ul tabIndex={0} className=" mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 left-0">
@@ -26,7 +26,7 @@ const StudentNavbar = (props) => {
                 General Profile
               </Link>
             </li>
-            <li><Link href="/ediitStudentProfile">Edit Student Profile</Link></li>
+            <li><Link href="/profile/edit">Edit Student Profile</Link></li>
             <li>
               <SignOutButton>
                 <Link href="/">
