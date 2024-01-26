@@ -84,6 +84,10 @@ const parentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imgURL : {
+    type : String,
+    required : true,
+  },
   Lor: [
     {
       type: LorSchema,
