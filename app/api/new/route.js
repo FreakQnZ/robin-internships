@@ -23,6 +23,7 @@ export async function POST(request) {
       resume,
       portfolio,
       age,
+      imgURL,
       Lor = [],
       listings = [],
     } = await request.json();
@@ -47,6 +48,7 @@ export async function POST(request) {
       yearOfGraduation,
       resume,
       portfolio,
+      imgURL,
       age,
       Lor,
       listings,
