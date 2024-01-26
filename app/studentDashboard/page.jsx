@@ -21,7 +21,19 @@ const StudentDB = async  () => {
     }, { cache: 'no-store' });
     return result.json();
   }
-  
+
+  async function getListing() {
+    const result = await fetch(`http://localhost:3000/api/getListing`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: uId}),
+    }, { cache: 'no-store' });
+    return result.json();
+  }
+
+  const listings = await getListing()
   const details = await getStudentDetails()
   return (
     <div className='h-dvh w-full flex'>
@@ -47,14 +59,18 @@ const StudentDB = async  () => {
           <div className=' h-2/3 p-5 flex flex-col gap-2'>
             <p className=' text-2xl'>Active Internships</p>
             <div className=' flex-1 bg-base-200 w-full rounded-box p-2 overflow-y-scroll flex flex-col gap-2'>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
+              {listings.map((listing, index) => (
+                  <ListingsStudent
+                    key={index}
+                    data={listing}
+                    index={index}
+                    firstName={user?.firstName}
+                    lastName={user?.lastName}
+                    email={details?.data?.student?.email}
+                    college={details?.data?.student?.college}
+                    userId={uId}
+                  />
+                ))}
             </div>
           </div>
           <div className=' h-1/3 p-5 flex flex-col gap-2'>
