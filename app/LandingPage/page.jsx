@@ -8,8 +8,8 @@ function Hero() {
   return (
     <div className={styles.heroContainer}>
         <div className={styles.heroTextContainer}>
-            <h1 className={styles.heroTitle}>Start Your Journey: Find Internships that don't require WorkEx</h1>
-            <p className={styles.heroDescription}>We're dedicated to empowering your career growth.</p>
+            <h1 className={styles.heroTitle}>Start Your Journey: Find Internships that don&apos;t require WorkEx</h1>
+            <p className={styles.heroDescription}>We&apos;re dedicated to empowering your career growth.</p>
         </div>
         <div className={styles.heroImageContainer}>
             <Image src="/logo.jpeg" width={700} height={700}></Image>

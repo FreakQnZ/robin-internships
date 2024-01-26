@@ -7,7 +7,7 @@ function Hero() {
     return (
       <div className={styles.heroContainer}>
           <div className={styles.heroTextContainer}>
-              <h1 className={styles.heroTitle}>Start Your Journey: <br /> Find Internships that  <br /> don't require WorkEx</h1>
+              <h1 className={styles.heroTitle}>Start Your Journey: <br /> Find Internships that  <br /> don&apos;t require WorkEx</h1>
               <p className={styles.heroDescription}>At Robin internships, you can find a wide range of  internships at startups. These internships do NOT require you to have prior work experience or  technical skill.</p>
               <div className={styles.heroButton}>
                 <button className="btn bg-[#2aa4b4] text-white border-opacity-0 hover:bg-accent w-72 ">Get Started</button>

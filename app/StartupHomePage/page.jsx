@@ -52,7 +52,7 @@ function Information1(){
             </div>
             <div className={styles.informationTextContainer}>
                 <h2 className={styles.informationTitle}>Robin Internships: Empowering Startups</h2>
-                <p className={styles.informationDescription}>Robin Internships is the platform for startups to find talented interns. Find the right interns for roles that don't require hand holding from the founding team!</p>
+                <p className={styles.informationDescription}>Robin Internships is the platform for startups to find talented interns. Find the right interns for roles that don&apos;t require hand holding from the founding team!</p>
                 <div className={styles.informationButton}>
                  <button className="btn bg-blue-400 text-black font-black border-opacity-0 hover:bg-accent w-64 text-lg ">Join Now!</button>
                 </div>
