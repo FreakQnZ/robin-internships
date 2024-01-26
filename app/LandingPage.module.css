@@ -1,0 +1,117 @@
+.heroContainer{
+    display: flex;
+    background-color: #cdedfd;
+    gap:100px;
+    padding-top: 70px;
+    padding-bottom: 80px;
+    font-family: 'Poppins';
+}
+
+.heroImageContainer{
+    flex:1;
+    position: relative;
+}
+
+.heroTextContainer{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+    justify-content: center;
+    padding-left: 100px;
+    padding-top: 15px;
+    letter-spacing: 1px;
+    font-family: 'Poppins';
+}
+
+.heroTitle{
+    font-size: 60px;
+    font-weight: 600;
+    font-family: 'Poppins';
+
+}
+
+.heroDescription{
+    font-size: 25px;
+    font-weight: 400;
+    font-family: 'Poppins';
+}
+
+.missionContainer{
+    background: white;
+    width:1440px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:40px;
+    padding-bottom: 50px;
+}
+
+.missionTitle{
+    font-size: 43px;
+    padding-top: 55px;
+    font-weight: 520;
+}
+
+.missionDescription{
+    width: 1100px;
+    font-size: 20px;
+    align-items: center;
+    gap:20px;
+    word-spacing: 2px;
+    letter-spacing: 0.5px;
+}
+
+.missionImage{
+    width: 800px;
+    height: 420px;
+    padding-left: 100px;
+}
+
+.missionInfoContainer{
+    display: flex;
+    align-items: center;
+    gap:210px;
+}
+
+.infoItem{
+    display: flex;
+    flex-direction: column;
+    gap :10px;
+}
+
+.infoTitle{
+    font-size: 40px;
+    font-weight: 600;
+    padding-left: 20px;
+}
+
+.infoDescription{
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.startContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: #5ac8fa;
+    align-items: center;
+}
+
+.startTitle{
+    font-size: 50px;
+    font-weight: 600;
+    color: white;
+    word-spacing: 13px;
+    padding-top: 100px;
+    padding-bottom: 70px;
+}
+
+.startButtonsContainer{
+    display: flex;
+    gap:50px;
+    padding-bottom: 100px;
+}
+
