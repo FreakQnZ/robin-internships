@@ -1,11 +1,8 @@
 import React from 'react'
-import StudentNavbar from '@/app/components/student/studentNavbar';
-import ListingsStudent from '@/app/components/student/listingsStudent';
-import {currentUser} from '@clerk/nextjs';
 import Image from 'next/image'
 import Stats from '@/app/components/student/stats';
 import Lor from '@/app/components/student/lor';
-import ListingStatus from '@/app/components/student/status';
+
 
 const StudentDB = async  ({params}) => {
 
@@ -40,21 +37,6 @@ const StudentDB = async  ({params}) => {
           </div>
           <div className=' h-1/2 p-5'>
             <Lor list={details?.data?.student?.Lor}/>
-          </div>
-        </div>
-        <div className=' h-full w-1/2'>
-          <div className=' h-2/3 p-5 flex flex-col gap-2'>
-            <p className=' text-2xl'>Active Internships</p>
-            <div className=' flex-1 bg-base-200 w-full rounded-box p-2 overflow-y-scroll flex flex-col gap-2'>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-              <ListingsStudent/>
-            </div>
           </div>
         </div>
       </div>
