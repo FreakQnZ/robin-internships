@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from 'react';
-// import NavbarHome from '../components/navbarHome';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation'
 
@@ -44,14 +43,16 @@ const Page = () => {
 
   const { isSignedIn, user, isLoaded } = useUser();
   const uId = user?.id;
-  const fname = user?.firstName
-  const lname = user?.lastName
-  // const imgURL = user?.imageUrl
+
+  const fname = user?.fullName
+  const imgURL = user?.imageUrl
+
+
 
   const [formData, setFormData] = useState({
     userId : uId,
     firstName: fname,
-    lastName: lname,
+    lastName: ".",
     age: 0,
     gender: '',
     phoneNumber: '',
