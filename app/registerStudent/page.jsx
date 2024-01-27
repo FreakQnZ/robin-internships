@@ -46,7 +46,7 @@ const Page = () => {
   const uId = user?.id;
   const fname = user?.firstName
   const lname = user?.lastName
-  const imgURL = user?.imageUrl
+  // const imgURL = user?.imageUrl
 
   const [formData, setFormData] = useState({
     userId : uId,
@@ -62,7 +62,7 @@ const Page = () => {
     college : '',
     resume: 'example',
     portfolio: 'example',
-    imgURL : imgURL,
+    imgURL : 'example',
   });
 
   const handleChange = (e) => {
