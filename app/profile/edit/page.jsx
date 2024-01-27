@@ -16,7 +16,7 @@ const Page = () => {
   const [showToast, setShowToast] = useState(false);
 
   async function addResume() {
-    const result = await fetch(`/api/addResume`, {
+    const result = await fetch(`https://robin-internships.vercel.app/api/addResume`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const Page = () => {
   }
 
   async function addLor() {
-    const result = await fetch(`/api/addLor`, {
+    const result = await fetch(`https://robin-internships.vercel.app/api/addLor`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const Page = () => {
   }
 
   async function addPortfolio() {
-    const result = await fetch(`/api/addPortfolio`, {
+    const result = await fetch(`https://robin-internships.vercel.app/api/addPortfolio`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
