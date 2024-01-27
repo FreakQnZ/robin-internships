@@ -22,8 +22,6 @@ export async function POST(request) {
       portfolio,
       age,
       imgURL,
-      Lor = [],
-      listings = [],
     } = await request.json();
 
     await userAll.create({
@@ -46,8 +44,8 @@ export async function POST(request) {
       portfolio,
       imgURL,
       age,
-      Lor,
-      listings,
+      Lor : [],
+      listings : [],
     });
 
     return NextResponse.json({
