@@ -55,7 +55,6 @@ const Page = () => {
     age: 0,
     gender: '',
     phoneNumber: '',
-    university: '',
     course: '',
     Domains: 0,
     yearOfGraduation: 0,
@@ -123,12 +122,6 @@ const Page = () => {
         label="Contact Number"
         type="tel"
         value={formData.phoneNumber}
-        onChange={handleChange}
-      />
-      <InputGroup1
-        name="university"
-        label="University"
-        value={formData.university}
         onChange={handleChange}
       />
       <InputGroup1
