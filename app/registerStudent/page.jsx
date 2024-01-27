@@ -61,7 +61,6 @@ const Page = () => {
     email: '',
     college : '',
     resume: 'example',
-    linkedin: '',
     portfolio: 'example',
     imgURL : imgURL,
   });
@@ -134,12 +133,6 @@ const Page = () => {
         name="Domains"
         label="Domains worked in"
         value={formData.Domains}
-        onChange={handleChange}
-      />
-      <InputGroup1
-        name="linkedin"
-        label="Linkedin"
-        value={formData.linkedin}
         onChange={handleChange}
       />
       <InputGroup1
