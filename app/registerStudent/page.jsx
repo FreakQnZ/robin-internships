@@ -43,8 +43,11 @@ const Page = () => {
 
   const { isSignedIn, user, isLoaded } = useUser();
   const uId = user?.id;
+
   const fname = user?.fullName
   const imgURL = user?.imageUrl
+
+
 
   const [formData, setFormData] = useState({
     userId : uId,
@@ -60,7 +63,7 @@ const Page = () => {
     college : '',
     resume: 'example',
     portfolio: 'example',
-    imgURL : imgURL,
+    imgURL : 'example',
   });
 
   const handleChange = (e) => {
