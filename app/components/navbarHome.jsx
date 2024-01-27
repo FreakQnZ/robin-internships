@@ -9,7 +9,7 @@ const Navbar = async () => {
     const uId = user?.id;
 
     async function checkUserExists() {
-        const res = await fetch(`/verify`, {
+        const res = await fetch('https://robin-internships.vercel.app/api/verify', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
