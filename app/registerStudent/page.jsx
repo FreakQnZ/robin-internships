@@ -63,7 +63,7 @@ const Page = () => {
     college : '',
     resume: 'example',
     portfolio: 'example',
-    imgURL : 'example',
+    imgURL : imgURL,
   });
 
   const handleChange = (e) => {
@@ -77,7 +77,8 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(formData);
-    const res = await fetch('https://robin-internships.vercel.app/api/new', {
+    const HOST = "http://localhost:3000/api" || process.env.API_HOST
+    const res = await fetch(`${HOST}/new`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
