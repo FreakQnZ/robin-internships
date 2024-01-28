@@ -8,7 +8,7 @@ function Hero() {
   return (
     <div className={styles.heroContainer}>
         <div className={styles.heroTextContainer}>
-            <h1 className={styles.heroTitle}>Start Your Journey: Find Internships that don&apos;t require WorkEx</h1>
+            <h1 className={styles.heroTitle}>Welcome to Robin Internships</h1>
             <p className={styles.heroDescription}>We&apos;re dedicated to empowering your career growth.</p>
         </div>
         <div className={styles.heroImageContainer}>

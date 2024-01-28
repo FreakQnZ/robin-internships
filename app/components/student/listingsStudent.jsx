@@ -25,7 +25,8 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
   };
 
   async function applyForListing() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/applyForListing`, {
+    const HOST = "http://localhost:3000/api" || process.env.API_HOST
+    const result = await fetch(`${HOST}/applyForListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
