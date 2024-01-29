@@ -33,15 +33,15 @@ function Mission(){
                 <div className='pl-12 lg:pl-20'><Image title='Our Mission' src = "/OurMission.jpeg" width={700} height = {500} /></div>
                 <div className='flex flex-row justify-around w-full'>
                     <div >
-                        <h1 className=" text-5xl font-semibold" >2000</h1>
+                        <h1 className=" text-4xl lg:text-5xl font-semibold" >2000</h1>
                         <p className=' pt-5 tracking-wider'> internships completed</p>
                     </div>
                     <div>
-                        <h1 className=" text-5xl font-semibold">1000</h1>
+                        <h1 className=" text-4xl lg:text-5xl font-semibold">1000</h1>
                         <p className=' pt-5 tracking-wider'>interns have joined</p>
                     </div>
                     <div>
-                        <h1 className=" text-5xl font-semibold">100</h1>
+                        <h1 className=" text-4xl lg:text-5xl font-semibold">100</h1>
                         <p className=' pt-5 tracking-wider'>startups have joined</p>
                     </div>
                 </div>

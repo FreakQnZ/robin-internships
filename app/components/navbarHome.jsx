@@ -88,8 +88,8 @@ const Navbar = async () => {
   
           ) : (
               <>
-              <Link href="/signin" className="btn bg-transparent text-black hover:bg-blue-400 hover:text-white w-40">Log In</Link>
-              <Link href="/signup" className="btn bg-blue-400 text-black hover:bg-blue-500 border-opacity-0 hover:text-white w-40">Sign Up</Link>
+              <Link href="/signin" className=" btn bg-blue-400 text-black hover:bg-blue-500 border-opacity-0 hover:text-white lg:w-40">Log In</Link>
+              <Link href="/signup" className="btn ml-2 bg-transparent text-black hover:bg-blue-400 hover:text-white lg:w-40">Sign Up</Link>
               </>
           ) }
          </div>
