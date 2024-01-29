@@ -45,7 +45,6 @@ const Page = () => {
   const {userId} = useAuth();
   const uId = userId;
 
-  const HOST = process.env.API_HOST
 
   const [formData, setFormData] = useState({
     userId : uId,
@@ -70,7 +69,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    const res = await fetch(`https://robinit.in/api/createListing`, {
+    const res = await fetch(`${process.env.API_HOST}/createListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

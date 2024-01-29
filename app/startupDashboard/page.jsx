@@ -12,10 +12,9 @@ const StudentDB = async  () => {
   const user = await currentUser();
   const uId = user?.id;
 
-  const HOST = process.env.API_HOST
 
   async function getListings() {
-    const result = await fetch(`https://robinit.in/api/getListingsForStartup`, {
+    const result = await fetch(`${process.env.API_HOST}/getListingsForStartup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +25,7 @@ const StudentDB = async  () => {
   }
 
   async function getAboutUs() {
-    const res = await fetch(`https://robinit.in/api/getAboutUs`, {
+    const res = await fetch(`${process.env.API_HOST}/getAboutUs`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

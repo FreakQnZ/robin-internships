@@ -15,10 +15,9 @@ const Page = () => {
   const [portfolio, setPortfolio] = useState('');
   const [showToast, setShowToast] = useState(false);
 
-  const HOST = process.env.API_HOST
 
   async function addResume() {
-    const result = await fetch(`https://robinit.in/api/addResume}`, {
+    const result = await fetch(`${process.env.API_HOST}/addResume}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +30,7 @@ const Page = () => {
   }
 
   async function addLor() {
-    const result = await fetch(`https://robinit.in/api/addLor}`, {
+    const result = await fetch(`${process.env.API_HOST}/addLor}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +43,7 @@ const Page = () => {
   }
 
   async function addPortfolio() {
-    const result = await fetch(`https://robinit.in/api/addPortfolio`, {
+    const result = await fetch(`${process.env.API_HOST}/addPortfolio`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

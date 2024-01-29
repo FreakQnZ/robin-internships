@@ -9,12 +9,11 @@ import ListingStatus from '../components/student/status';
 
 const StudentDB = async  () => {
 
-  const HOST = process.env.API_HOST
 
   const user = await currentUser();
   const uId = user?.id;
   async function getStudentDetails() {
-    const result = await fetch(`https://robinit.in/api/studentDetails`, {
+    const result = await fetch(`${process.env.API_HOST}/studentDetails`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +24,7 @@ const StudentDB = async  () => {
   }
 
   async function getListing() {
-    const result = await fetch(`https://robinit.in/api/getListing`, {
+    const result = await fetch(`${process.env.API_HOST}/getListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

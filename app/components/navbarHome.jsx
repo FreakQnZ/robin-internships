@@ -9,8 +9,7 @@ const Navbar = async () => {
     const uId = user?.id;
 
     async function checkUserExists() {
-        const HOST = process.env.API_HOST
-        const res = await fetch(`https://robinit.in/api/verify`, {
+        const res = await fetch(`${process.env.API_HOST}/verify`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

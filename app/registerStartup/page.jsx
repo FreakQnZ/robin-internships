@@ -67,8 +67,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(formData);
-    const HOST = process.env.API_HOST
-    const res = await fetch(`https://robinit.in/api/newStartup`, {
+    const res = await fetch(`${process.env.API_HOST}/newStartup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

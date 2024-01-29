@@ -9,8 +9,7 @@ const StudentDB = async  ({params}) => {
 
   const user = params.viewStudentId;
   async function getStudentDetails() {
-    const HOST = process.env.API_HOST
-    const result = await fetch(`https://robinit.in/api/studentDetails`, {
+    const result = await fetch(`${process.env.API_HOST}/studentDetails`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
