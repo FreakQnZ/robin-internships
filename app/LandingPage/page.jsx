@@ -1,18 +1,17 @@
 import React from 'react'
-import styles from "../LandingPage.module.css"
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '../components/navbarHome'
 
 function Hero() {
   return (
-    <div className={styles.heroContainer}>
-        <div className={styles.heroTextContainer}>
-            <h1 className={styles.heroTitle}>Welcome to Robin Internships</h1>
-            <p className={styles.heroDescription}>We&apos;re dedicated to empowering your career growth.</p>
-        </div>
-        <div className={styles.heroImageContainer}>
-            <Image src="/logo.jpeg" width={700} height={700}></Image>
+    <div className="hero min-h-56 bg-sky-200">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+            <div className=''><Image title='logo' src="/logo.png" width={650} height={650}></Image></div>
+            <div>
+            <h1 className="text-5xl font-bold">Welcome to Robin Internships</h1>
+            <p className="py-6 text-lg">We&apos;re dedicated to empowering your career growth.</p>
+            </div>
         </div>
     </div>
   )
@@ -20,57 +19,66 @@ function Hero() {
 
 function Mission(){
     return(
-        <div className={styles.missionContainer}>
-            <h2 className={styles.missionTitle}>
-                Our Mission
-            </h2>
-            <div className={styles.missionDescription}>
-               <p style={{paddingLeft:"100px"}}>We believe in providing internships to <i><strong>students</strong></i> to help start off with their interning journey.<br /></p>
-               <p style={{paddingLeft:"80px"}}>We believe in finding competent interns for <i><strong>startups</strong></i> that could use short term responsible help.<br /></p>
-               <p style={{paddingLeft:"140px"}}>We believe in aiding <i><strong>colleges</strong></i> upskill their students and making them hire-able</p>
+        <>
+            <div className="hero min-h-72 w-full">
+            <div className="hero-content text-center flex flex-col items-center justify-center w-full">
+                <div className="">
+                <h1 className="text-5xl font-semibold py-10">Our Mission</h1>
+                    <div className=' text-xl leading-8 py-4'>
+                        <p >We believe in providing internships to <i><strong>students</strong></i> to help start off with their interning journey.</p>
+                        <p >We believe in finding competent interns for <i><strong>startups</strong></i> that could use short term responsible help.</p>
+                        <p >We believe in aiding <i><strong>colleges</strong></i> upskill their students and making them hire-able</p>
+                    </div>
+                </div>
+                <div className='pl-12 lg:pl-20'><Image title='Our Mission' src = "/OurMission.jpeg" width={700} height = {500} /></div>
+                <div className='flex flex-row justify-around w-full'>
+                    <div >
+                        <h1 className=" text-5xl font-semibold" >2000</h1>
+                        <p className=' pt-5 tracking-wider'> internships completed</p>
+                    </div>
+                    <div>
+                        <h1 className=" text-5xl font-semibold">1000</h1>
+                        <p className=' pt-5 tracking-wider'>interns have joined</p>
+                    </div>
+                    <div>
+                        <h1 className=" text-5xl font-semibold">100</h1>
+                        <p className=' pt-5 tracking-wider'>startups have joined</p>
+                    </div>
+                </div>
             </div>
-            <Image src = "/OurMission.jpeg" className={styles.missionImage} width={700} height = {500} />
-   
-            <div className={styles.missionInfoContainer}>
-                <div className = {styles.infoItem}>
-                    <h2 className={styles.infoTitle}>2000</h2>
-                    <p className={styles.infoDescription}> internships completed</p>
-                </div>
-                <div className = {styles.infoItem}>
-                    <h2 className={styles.infoTitle}>1000</h2>
-                    <p className={styles.infoDescription}>interns have joined</p>
-                </div>
-                <div className = {styles.infoItem}>
-                    <h2 className={styles.infoTitle}>100</h2>
-                    <p className={styles.infoDescription}>startups have joined</p>
-                </div>
             </div>
-    </div>
+        </>
     )
 }
 
 function Start(){
     return(
-        <div className={styles.startContainer}>
-            <h1 className={styles.startTitle}>Start Your Journey Now!</h1>
-            <div className={styles.startButtonsContainer}>
-                <Link href = "/signup" className="btn bg-white text-black hover:bg-blue-400 hover:text-white w-60">Start Now</Link>
-                <div className="btn bg-white text-black hover:bg-blue-500  hover:text-white w-60">Contact Us</div>
+        <>
+        <div className="hero min-h-72 bg-sky-400" >
+            <div></div>
+            <div className="hero-content text-center text-white">
+                <div className="">
+                    <h1 className="mb-5 text-5xl font-bold pb-10">Start Your Journey Now!</h1>
+                    <div className=' flex gap-4 justify-center'>
+                        <button className="btn lg:btn-wide btn-primary">Start Now</button>
+                        <button className="btn lg:btn-wide btn-primary">Contact Us</button>
+                    </div>
+                </div>
             </div>
-    
         </div>
+        </>
     )
 }
 
 
 function LandingPage(){
     return(
-        <>
+        <div className=' w-full'>
             <Navbar />
             <Hero />
             <Mission />
             <Start />
-        </>
+        </div>
     )
 }
 
