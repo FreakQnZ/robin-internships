@@ -9,7 +9,7 @@ import ListingStatus from '../components/student/status';
 
 const StudentDB = async  () => {
 
-  const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+  const HOST = process.env.API_HOST
 
   const user = await currentUser();
   const uId = user?.id;

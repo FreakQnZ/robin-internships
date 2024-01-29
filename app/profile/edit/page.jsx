@@ -15,7 +15,7 @@ const Page = () => {
   const [portfolio, setPortfolio] = useState('');
   const [showToast, setShowToast] = useState(false);
 
-  const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+  const HOST = process.env.API_HOST
 
   async function addResume() {
     const result = await fetch(`${HOST}/addResume}`, {

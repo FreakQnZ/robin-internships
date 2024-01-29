@@ -67,7 +67,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(formData);
-    const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+    const HOST = process.env.API_HOST
     const res = await fetch(`${HOST}/newStartup`, {
       method: 'POST',
       headers: {

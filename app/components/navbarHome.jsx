@@ -9,7 +9,7 @@ const Navbar = async () => {
     const uId = user?.id;
 
     async function checkUserExists() {
-        const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+        const HOST = process.env.API_HOST
         const res = await fetch(`${HOST}/verify`, {
           method: 'POST',
           headers: {

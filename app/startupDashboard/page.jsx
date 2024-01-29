@@ -12,7 +12,7 @@ const StudentDB = async  () => {
   const user = await currentUser();
   const uId = user?.id;
 
-  const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+  const HOST = process.env.API_HOST
 
   async function getListings() {
     const result = await fetch(`${HOST}/getListingsForStartup`, {

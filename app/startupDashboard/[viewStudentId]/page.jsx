@@ -9,7 +9,7 @@ const StudentDB = async  ({params}) => {
 
   const user = params.viewStudentId;
   async function getStudentDetails() {
-    const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+    const HOST = process.env.API_HOST
     const result = await fetch(`${HOST}/studentDetails`, {
       method: 'POST',
       headers: {

@@ -45,7 +45,7 @@ const Page = () => {
   const {userId} = useAuth();
   const uId = userId;
 
-  const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+  const HOST = process.env.API_HOST
 
   const [formData, setFormData] = useState({
     userId : uId,
