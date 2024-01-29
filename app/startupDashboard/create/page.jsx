@@ -70,7 +70,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    const res = await fetch(`https://robin-internships.vercel.app/api/createListing`, {
+    const res = await fetch(`https://robinit.in/api/createListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

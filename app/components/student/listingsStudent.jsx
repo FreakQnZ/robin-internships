@@ -26,7 +26,7 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
 
   async function applyForListing() {
     const HOST = process.env.API_HOST  || "http://localhost:3000/api"
-    const result = await fetch(`https://robin-internships.vercel.app/api/applyForListing`, {
+    const result = await fetch(`https://robinit.in/api/applyForListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

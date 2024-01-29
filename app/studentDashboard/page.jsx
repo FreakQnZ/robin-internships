@@ -14,7 +14,7 @@ const StudentDB = async  () => {
   const user = await currentUser();
   const uId = user?.id;
   async function getStudentDetails() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/studentDetails`, {
+    const result = await fetch(`https://robinit.in/api/studentDetails`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const StudentDB = async  () => {
   }
 
   async function getListing() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/getListing`, {
+    const result = await fetch(`https://robinit.in/api/getListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

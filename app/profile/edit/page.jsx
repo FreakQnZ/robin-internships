@@ -18,7 +18,7 @@ const Page = () => {
   const HOST = process.env.API_HOST
 
   async function addResume() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/addResume}`, {
+    const result = await fetch(`https://robinit.in/api/addResume}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const Page = () => {
   }
 
   async function addLor() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/addLor}`, {
+    const result = await fetch(`https://robinit.in/api/addLor}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const Page = () => {
   }
 
   async function addPortfolio() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/addPortfolio`, {
+    const result = await fetch(`https://robinit.in/api/addPortfolio`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
