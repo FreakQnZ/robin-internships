@@ -9,7 +9,8 @@ const StudentDB = async  ({params}) => {
 
   const user = params.viewStudentId;
   async function getStudentDetails() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/studentDetails`, {
+    const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+    const result = await fetch(`${HOST}/studentDetails`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

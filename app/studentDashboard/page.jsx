@@ -9,10 +9,12 @@ import ListingStatus from '../components/student/status';
 
 const StudentDB = async  () => {
 
+  const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+
   const user = await currentUser();
   const uId = user?.id;
   async function getStudentDetails() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/studentDetails`, {
+    const result = await fetch(`${HOST}/studentDetails`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,7 +25,7 @@ const StudentDB = async  () => {
   }
 
   async function getListing() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/getListing`, {
+    const result = await fetch(`${HOST}/getListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

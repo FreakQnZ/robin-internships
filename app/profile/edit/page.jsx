@@ -15,8 +15,10 @@ const Page = () => {
   const [portfolio, setPortfolio] = useState('');
   const [showToast, setShowToast] = useState(false);
 
+  const HOST = process.env.API_HOST  || "http://localhost:3000/api"
+
   async function addResume() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/addResume`, {
+    const result = await fetch(`${HOST}/addResume}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +31,7 @@ const Page = () => {
   }
 
   async function addLor() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/addLor`, {
+    const result = await fetch(`${HOST}/addLor}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +44,7 @@ const Page = () => {
   }
 
   async function addPortfolio() {
-    const result = await fetch(`https://robin-internships.vercel.app/api/addPortfolio`, {
+    const result = await fetch(`${HOST}/addPortfolio`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

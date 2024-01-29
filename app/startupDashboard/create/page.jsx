@@ -45,7 +45,7 @@ const Page = () => {
   const {userId} = useAuth();
   const uId = userId;
 
-
+  const HOST = process.env.API_HOST  || "http://localhost:3000/api"
 
   const [formData, setFormData] = useState({
     userId : uId,
@@ -70,7 +70,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    const res = await fetch('https://robin-internships.vercel.app/api/createListing', {
+    const res = await fetch(`${HOST}/createListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
