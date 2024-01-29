@@ -10,7 +10,7 @@ const Navbar = async () => {
 
     async function checkUserExists() {
         const HOST = process.env.API_HOST
-        const res = await fetch(`${HOST}/verify`, {
+        const res = await fetch(`https://robin-internships.vercel.app/api/verify`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

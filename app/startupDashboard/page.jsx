@@ -15,7 +15,7 @@ const StudentDB = async  () => {
   const HOST = process.env.API_HOST
 
   async function getListings() {
-    const result = await fetch(`${HOST}/getListingsForStartup`, {
+    const result = await fetch(`https://robin-internships.vercel.app/api/getListingsForStartup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ const StudentDB = async  () => {
   }
 
   async function getAboutUs() {
-    const res = await fetch(`${HOST}/getAboutUs`, {
+    const res = await fetch(`https://robin-internships.vercel.app/api/getAboutUs`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
