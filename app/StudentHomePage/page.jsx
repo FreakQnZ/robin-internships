@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from "../StudentHomePage.module.css"
 import Image from 'next/image'
 import Navbar from '../components/navbarHome'
 

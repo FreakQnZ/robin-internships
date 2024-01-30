@@ -36,7 +36,7 @@ const Navbar = async () => {
           <Link href="" className='hover:text-blue-300 cursor-pointer'>Contact Us</Link>
         </ul>
       </div>
-      <Link href = "/LandingPage"><Image className = " rounded-xl" src = "/logo.jpeg" width={50} height={50} /></Link>
+      <Link href = "/"><Image className = " rounded-xl" src = "/logo.jpeg" width={50} height={50} /></Link>
     </div>
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1 lg:space-x-8 text-lg">

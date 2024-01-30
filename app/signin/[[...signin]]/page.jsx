@@ -6,7 +6,8 @@ import Link from 'next/link'
 
 const Signin = () => {
   return (
-    <div className=' flex flex-col items-center h-dvh'>
+    <>
+    <div className=' lg:flex flex-col items-center h-dvh hidden'>
       <div className=' flex w-full h-full'>
         <div className=' w-1/2 bg-blue-200 flex flex-col justify-center items-center'>
           <Link href="/"><Image src={logo} width={500} height={500} /></Link>
@@ -17,6 +18,8 @@ const Signin = () => {
         <div className=' w-1/2 flex justify-center items-center shadow-none'><SignIn /></div>
       </div>
     </div>
+    <div className='lg:hidden'><SignIn /></div>
+    </>
   )
 }
 
