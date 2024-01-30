@@ -9,6 +9,7 @@ const Navbar = async () => {
     const uId = user?.id;
 
     async function checkUserExists() {
+        console.log(process.env.API_HOST)
         const res = await fetch(`${process.env.API_HOST}/verify`, {
           method: 'POST',
           headers: {

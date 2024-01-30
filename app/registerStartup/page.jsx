@@ -66,8 +66,9 @@ const Page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(formData);
-    const res = await fetch(`${process.env.API_HOST}/newStartup`, {
+    console.log(formData);
+    console.log(process.env.API_HOST)
+    const res = await fetch(`api/newStartup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
