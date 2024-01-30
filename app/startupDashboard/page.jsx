@@ -42,26 +42,26 @@ const StudentDB = async  () => {
   console.log(listings)
 
   return (
-    <div className='h-dvh w-full flex'>
+    <div className='lg:h-dvh w-full flex'>
       <StartupNavbar/>
       <div className=' w-full flex flex-col gap-4'>
         <div className=' flex gap-4 items-center justify-start w-full m-2 ml-10 mt-3'>
           <div className=' w-20 h-20 overflow-hidden rounded-full'><Image src={user?.imageUrl} alt="student" width={200} height={200}/></div>
           <p className=' text-2xl font-bold'>{user?.firstName } {user?.lastName}</p>
         </div>
-        <div className=' w-full grid h-5/6 grid-cols-6 gap-2 '>
-          <div className=' overflow-y-scroll col-span-2 bg-base-300 ml-5 m-2 rounded-box'>
+        <div className=' w-full grid h-5/6 lg:grid-cols-6 grid-cols-1 gap-2 '>
+          <div className=' lg:overflow-y-scroll lg:col-span-2 bg-base-300 ml-5 m-2 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>About the startup</p>
             <p className='p-5 text-lg'>{retDataAbout?.data}</p>
           </div>
-          <div className=' col-span-4 bg-base-300 m-2 mr-5 rounded-box'>
+          <div className=' lg:col-span-4 bg-base-300 m-2 ml-5 lg:ml-0 mr-5 rounded-box '>
             <p  className=' font-bold text0-2xl p-4  '>Current Openings</p>
             <ListingsCard listings={listings.data} />
           </div>
-          <div className=' col-span-3 bg-base-300 ml-5 m-2 rounded-box'>
+          <div className=' lg:col-span-3 bg-base-300 ml-5 m-2 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>Project directory ( recent job roles in the company)</p>
           </div>
-          <div className=' col-span-3 bg-base-300 m-2 mr-5 rounded-box flex flex-col justify-evenly h-full'>
+          <div className=' lg:col-span-3 bg-base-300 lg:ml-0 m-2 mr-5 ml-5  rounded-box flex flex-col justify-evenly h-full'>
             <div className=' m-2 flex justify-center'>
               <Stats/>
             </div>

@@ -7,13 +7,10 @@ import { CgProfile } from "react-icons/cg";
 
 const StartupNavbar = () => {
   return (
-    <div className="bg-base-200 p-2 flex flex-col h-full items-center justify-start gap-3">
-      <Link href="/studentDashboard" className='btn btn-ghost text-3xl btn-active'>
+    <div className="bg-base-200 p-2 flex flex-col lg:h-full items-center justify-start gap-3">
+      <Link href="/startupDashboard" className='btn btn-ghost text-3xl btn-active'>
         <IoMdHome />
       </Link>
-      {/* <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
-        <FaSearch />
-      </Link> */}
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost text-3xl ">
@@ -25,7 +22,6 @@ const StartupNavbar = () => {
                 General Profile
               </Link>
             </li>
-            <li><Link href="/ediitStudentProfile">Edit Student Profile</Link></li>
             <li>
               <SignOutButton>
                 <Link href="/">

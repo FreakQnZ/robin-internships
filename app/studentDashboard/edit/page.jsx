@@ -62,13 +62,13 @@ const Page = () => {
   };
 
   return (
-    <div className='h-dvh w-full flex'>
+    <div className='lg:h-dvh w-full flex'>
       <StudentNavbar act="utils"/>
       <div className=' h-full w-full flex'>
-        <div className=' p-2 m-2 w-full grid grid-rows-3 grid-cols-3 gap-2'>
+        <div className=' p-2 m-2 w-full grid grid-cols-1 lg:grid-rows-3 lg:grid-cols-3 lg:gap-2'>
 
-          <div className="card card-side bg-base-100 shadow-xl m-5 col-span-2 ">
-            <figure><Image src={logo} width={200} height={200} alt="Movie"/></figure>
+          <div className="card card-side bg-base-100 shadow-xl m-5 lg:col-span-2 ">
+            <figure ><Image className=' hidden lg:block' src={logo} width={200} height={200} alt="Movie"/></figure>
             <div className="card-body">
               <h2 className="card-title">Add / Update Resume</h2>
               <p>Drop a link to a pdf of your resume</p>
@@ -79,7 +79,7 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="card card-side bg-base-100 shadow-xl m-5 col-start-2 col-span-2">
+          <div className="card card-side bg-base-100 shadow-xl m-5 lg:col-start-2 lg:col-span-2">
             <div className="card-body">
               <h2 className="card-title">Add Lor</h2>
               <p>Add a link to a pdf of your Letter of Recommendation</p>
@@ -88,11 +88,11 @@ const Page = () => {
                 <button onClick={addLor} className="btn btn-primary">Submit</button>
               </div>
             </div>
-            <figure><Image src={logo} width={200} height={200} alt="Movie"/></figure>
+            <figure ><Image className=' hidden lg:block' src={logo} width={200} height={200} alt="Movie"/></figure>
           </div>
 
-          <div className="card card-side bg-base-100 shadow-xl m-5 col-span-2">
-            <figure><Image src={logo} width={200} height={200} alt="Movie"/></figure>
+          <div className="card card-side bg-base-100 shadow-xl m-5 lg:col-span-2">
+            <figure><Image className=' hidden lg:block' src={logo} width={200} height={200} alt="Movie"/></figure>
             <div className="card-body">
               <h2 className="card-title">Add / Update Portfolio</h2>
               <p>Add a link to a pdf of your portfolio</p>
