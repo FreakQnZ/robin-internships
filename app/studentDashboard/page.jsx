@@ -34,8 +34,21 @@ const StudentDB = async  () => {
     return result.json();
   }
 
+  async function getApplied() {
+    const result = await fetch(`${process.env.API_HOST}/getApplied`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: uId}),
+    }, { cache: 'no-store' });
+    return result.json();
+  }
+
   const listings = await getListing()
   const details = await getStudentDetails()
+  const appliedListings = await getApplied()
+
   return (
     <div className='lg:h-dvh w-full flex'>
       <StudentNavbar act="home"/>
@@ -46,8 +59,8 @@ const StudentDB = async  () => {
               <div className=' w-48 h-48 overflow-hidden rounded-full hidden lg:block'><Image src={user?.imageUrl} alt="student" width={200} height={200}/></div>
               <div className='flex flex-col gap-6'>
                 <p className=' text-2xl font-bold'>{user?.firstName } {user?.lastName}</p>
-                <a href={details?.data?.student?.resume} target='_blank' className='btn btn-wide btn-primary'>Student Resume</a>
-                <a href={details?.data?.student?.portfolio} target='_blank' className='btn btn-wide btn-primary'>Portfolio</a>
+                <a href={details?.data?.student?.resume} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400' style={{backgroundColor: "#ffffff"}}>Student Resume</a>
+                <a href={details?.data?.student?.portfolio} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400' style={{backgroundColor: "#ffffff"}}>Portfolio</a>
               </div>
             </div>
             <Stats/>
@@ -59,7 +72,7 @@ const StudentDB = async  () => {
         <div className=' h-full lg:w-1/2 w-full'>
           <div className=' lg:h-2/3 p-5 flex flex-col gap-2'>
             <p className=' text-2xl'>Active Internships</p>
-            <div className=' flex-1 bg-base-200 w-full rounded-box p-2 overflow-y-scroll flex flex-col gap-2'>
+            <div className=' flex-1 bg-[#c8edfd] w-full rounded-box p-2 overflow-y-scroll flex flex-col gap-2'>
               {listings.map((listing, index) => (
                   <ListingsStudent
                     key={index}
@@ -70,6 +83,7 @@ const StudentDB = async  () => {
                     email={details?.data?.student?.email}
                     college={details?.data?.student?.college}
                     userId={uId}
+                    studentPhoneNumber = {details?.data?.student?.phoneNumber}
                   />
                 ))}
             </div>
@@ -77,7 +91,14 @@ const StudentDB = async  () => {
           <div className=' lg:h-1/3 p-5 flex flex-col gap-2'>
             <p className=' text-2xl'>Application Status</p>
             <div className=' flex-1 bg-base-200 w-full rounded-box p-2 overflow-y-scroll flex flex-col gap-2'>
-              <ListingStatus/>
+              {appliedListings.data.map((listing, index) => (
+                <ListingStatus
+                  key={index}
+                  companyName={listing.startupName}
+                  listingName={listing.listingName}
+                  status={listing.status}
+                />
+              ))}
             </div>
           </div>
         </div>

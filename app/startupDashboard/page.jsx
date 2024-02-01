@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 
 const StudentDB = async  () => {
-  console.log("hello")
+
   const user = await currentUser();
   const uId = user?.id;
 
@@ -36,10 +36,10 @@ const StudentDB = async  () => {
   }
 
   const retDataAbout = await getAboutUs()
-  console.log(retDataAbout) 
+
 
   const listings = await getListings()
-  console.log(listings)
+
 
   return (
     <div className='lg:h-dvh w-full flex'>

@@ -9,7 +9,7 @@ export async function POST(request) {
   try {
     connectDB();
 
-    const { userId, startupId, listingId, studentName, studentEmail, studentCollege } = await request.json();
+    const { userId, startupId, listingId, studentName, studentPhoneNumber, studentEmail, studentCollege } = await request.json();
 
     // Find the student in the database using the userId
     const student = await studentAll.findOne({ userId });
@@ -40,6 +40,7 @@ export async function POST(request) {
       student_name: studentName,
       student_email: studentEmail,
       student_college: studentCollege,
+      student_phoneNumber: studentPhoneNumber,
     };
 
     // Push the applicant object to the listing's applicants array

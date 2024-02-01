@@ -3,11 +3,14 @@
 import React, { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
+import Link from 'next/link';
 
-const ListingsStudent = ({ data, index, firstName, lastName, email, college, userId }) => {
+
+const ListingsStudent = ({ data, index, firstName, lastName, email, college, userId, studentPhoneNumber }) => {
 
   const [openModalIndex, setOpenModalIndex] = useState(null);
   const [showToast, setShowToast] = useState(false);
+
 
   const handleToast = () => {
     setShowToast(true);
@@ -25,20 +28,21 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
   };
 
   async function applyForListing() {
-    const result = await fetch(`${process.env.API_HOST}/applyForListing`, {
+    const result = await fetch(`/api/applyForListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId, startupId: data?.startupId, listingId: data?._id, studentName: `${firstName} ${lastName}`, studentEmail: email, studentCollege: college }),
+      body: JSON.stringify({ userId, startupId: data?.startupId, listingId: data?._id, studentName: `${firstName} ${lastName}`, studentEmail: email, studentCollege: college ,studentPhoneNumber: studentPhoneNumber}),
     }, { cache: 'no-store' });
     closeEditModal();
     handleToast();
+    window.location.reload();
     return result.json();
   }
 
   return (
-    <div role="alert" className="alert bg-base-200 border-0 rounded-none border-gray-300 border-b-2">
+    <div role="alert" className="alert bg-[#54c6fe] border-0 rounded-half border-gray-400 border-b-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-info shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
       <div>
         <h3 className="font-semibold">{data.startupName}</h3>
@@ -51,8 +55,8 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
         {openModalIndex === index && (
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="modal-box">
-              <h3 className="font-bold text-lg">{data.lname}</h3>
-              <p className="py-4">{data.startupName}</p>
+              <h3 className="font-bold text-lg">Internship : {data.lname}</h3>
+              <Link href={`/studentDashboard/${data?.startupId}`} target="_blank"><p className="py-4">Company name : {data.startupName}</p></Link> 
               <p className="py-4">Domain : {data.domain}</p>
               <p className="py-4">Duration : {data.duration}</p>
               <p className="py-4">Stipend : {data.stipend}</p>

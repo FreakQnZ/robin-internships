@@ -17,7 +17,7 @@ const Page = () => {
 
 
   async function addResume() {
-    const result = await fetch(`${process.env.API_HOST}/addResume}`, {
+    const result = await fetch(`/addResume}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const Page = () => {
   }
 
   async function addLor() {
-    const result = await fetch(`${process.env.API_HOST}/addLor}`, {
+    const result = await fetch(`/addLor}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const Page = () => {
   }
 
   async function addPortfolio() {
-    const result = await fetch(`${process.env.API_HOST}/addPortfolio`, {
+    const result = await fetch(`/addPortfolio`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
