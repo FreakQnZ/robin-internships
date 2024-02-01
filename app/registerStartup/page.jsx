@@ -44,6 +44,7 @@ const Page = () => {
 
   const { isSignedIn, user, isLoaded } = useUser();
   const uId = user?.id;
+  const imgURL = user?.imageUrl;
 
   const [formData, setFormData] = useState({
     userId : uId,
@@ -54,6 +55,7 @@ const Page = () => {
     phno: '',
     insta: '',
     linkedin: '',
+    imgURL: imgURL,
   });
 
   const handleChange = (e) => {
@@ -66,8 +68,8 @@ const Page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log(process.env.API_HOST)
+
+
     const res = await fetch(`api/newStartup`, {
       method: 'POST',
       headers: {
@@ -75,7 +77,7 @@ const Page = () => {
       },
       body: JSON.stringify(formData),
     })
-    console.log(res);
+
 
     router.push('/startupDashboard');
   };

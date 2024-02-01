@@ -8,9 +8,9 @@ import { FaSearch } from "react-icons/fa";
 
 const StudentNavbar = (props) => {
   return (
-    <div className="bg-base-200 p-2 flex flex-col lg:h-full items-center justify-start gap-3">
+    <div className="bg-[#5ac8fa] p-2 flex flex-col lg:h-full items-center justify-start gap-3 text-slate-200">
       <Link href="/studentDashboard" className={props.act === 'home' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
-        <IoMdHome />
+         <IoMdHome />
       </Link>
       <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
         <FaSearch />

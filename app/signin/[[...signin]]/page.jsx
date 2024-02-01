@@ -9,7 +9,7 @@ const Signin = () => {
     <>
     <div className=' lg:flex flex-col items-center h-dvh hidden'>
       <div className=' flex w-full h-full'>
-        <div className=' w-1/2 bg-blue-200 flex flex-col justify-center items-center'>
+        <div className=' w-1/2 bg-[#c8edfd] flex flex-col justify-center items-center'>
           <Link href="/"><Image src={logo} width={500} height={500} /></Link>
           <p className=' text-center font-bold text-3xl'>Welcome to robin <br /> Internships!</p>
           <br />

@@ -7,7 +7,7 @@ import { CgProfile } from "react-icons/cg";
 
 const StartupNavbar = () => {
   return (
-    <div className="bg-base-200 p-2 flex flex-col lg:h-full items-center justify-start gap-3">
+    <div className="bg-[#5ac8fa] p-2 flex flex-col lg:h-full items-center justify-start gap-3">
       <Link href="/startupDashboard" className='btn btn-ghost text-3xl btn-active'>
         <IoMdHome />
       </Link>

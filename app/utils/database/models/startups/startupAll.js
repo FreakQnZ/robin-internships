@@ -13,6 +13,10 @@ const subsubTaskSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  student_phoneNumber : {
+    type: Number,
+    required: true,
+  },
   student_college : {
     type: String,
     required: true,
@@ -52,11 +56,25 @@ const subTaskSchema = new mongoose.Schema({
     type : Number,
     required : true,
   },
+  isActive : {
+    type : Number,
+    default : 1,
+  },
   applicants: [
     {
       type: subsubTaskSchema,
     },
   ],
+  acceptedApplicants : [
+    {
+      type : subsubTaskSchema,
+    },
+  ],
+  rejectedApplicants : [
+    {
+      type : subsubTaskSchema,
+    }
+  ]
 });
 
 const parentSchema = new mongoose.Schema({
@@ -92,11 +110,16 @@ const parentSchema = new mongoose.Schema({
     type: String,
     required : true,
   },
+  imgURL : {
+    type : String,
+    required : true,
+  },
   listings: [
     {
       type: subTaskSchema,
     },
   ],
+
 });
 
 mongoose.models = {}

@@ -35,7 +35,7 @@ const StudentDB = async  ({params}) => {
             </div>
             <Stats/>
           </div>
-          <div className=' h-1/2 p-5'>
+          <div className=' h-1/2 p-5 bg-[#c8edfd]'>
             <Lor list={details?.data?.student?.Lor}/>
           </div>
         </div>
