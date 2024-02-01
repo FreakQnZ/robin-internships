@@ -69,9 +69,7 @@ const Page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const HOST = process.env.API_HOST  || "http://localhost:3000/api"
-    const res = await fetch(`${HOST}/createListing`, {
+    const res = await fetch(`/api/createListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
