@@ -21,13 +21,13 @@ const StudentNavbar = (props) => {
             <CgProfile />
           </div>
           <ul tabIndex={0} className=" mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 left-0">
-            <li>
+            <li className='text-black'>
               <Link href="/profile">
                 General Profile
               </Link>
             </li>
-            <li><Link href="/studentDashboard/edit">Edit Student Profile</Link></li>
-            <li>
+            <li className='text-black'><Link href="/studentDashboard/edit">Edit Student Profile</Link></li>
+            <li className='text-black'>
               <SignOutButton>
                 <Link href="/">
                   <p className='pr-1'>log Out</p>
