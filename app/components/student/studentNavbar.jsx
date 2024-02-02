@@ -5,6 +5,7 @@ import { PiSignOutBold } from "react-icons/pi";
 import { IoMdHome } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { FaSearch } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 
 const StudentNavbar = (props) => {
   return (
@@ -14,6 +15,9 @@ const StudentNavbar = (props) => {
       </Link>
       <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
         <FaSearch />
+      </Link>
+      <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
+        <FaCheck />
       </Link>
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
