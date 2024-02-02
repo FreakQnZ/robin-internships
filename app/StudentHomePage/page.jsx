@@ -10,7 +10,7 @@ function Hero() {
             <div className=' flex flex-col'>
             <h1 className="lg:text-5xl text-3xl leading-9 font-semibold lg:leading-relaxed">Start Your Journey: <br /> Find Internships that  <br /> don&apos;t require WorkEx</h1>
             <p className="py-6 tracking-wider">At Robin internships, you can find a wide range of  internships at startups. These internships do NOT require you to have prior work experience or  technical skill.</p>
-            <div className='flex justify-center'><button className="btn btn-primary btn-wide">Get Started</button></div>
+            <div><button className="btn btn-primary btn-wide">Get Started</button></div>
             </div>
         </div>
     </div>

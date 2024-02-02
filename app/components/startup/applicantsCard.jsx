@@ -2,7 +2,6 @@
 
 import React , {useState} from 'react';
 import Link from 'next/link';
-import { get } from 'mongoose';
 
 const ApplicantsCard = ({ applicants , listingId }) => {
   const [hiddenCards, setHiddenCards] = useState([]);
