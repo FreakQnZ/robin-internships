@@ -2,6 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import Navbar from '../components/navbarHome'
 
+export const metadata = {
+    title: 'Startup Home',
+    description: 'Hire short term, competent interns for your startup now at Robin internships!',
+  }
+
 function Hero() {
     return (
     <div className="hero bg-white lg:mt-20">

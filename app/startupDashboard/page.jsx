@@ -6,6 +6,11 @@ import StartupNavbar from '../components/startup/startupNavbar';
 import ListingsCard from '../components/startup/listingsCard';
 import Link from 'next/link'
 
+export const metadata = {
+  title: 'Startup Dashboard',
+  description: 'Hire short term, competent interns for your startup now at Robin internships!',
+}
+
 
 const StudentDB = async  () => {
 
