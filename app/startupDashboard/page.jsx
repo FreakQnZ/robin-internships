@@ -1,3 +1,4 @@
+
 import React from 'react'
 import {currentUser} from '@clerk/nextjs';
 import Image from 'next/image'
@@ -56,7 +57,7 @@ const StudentDB = async  () => {
           </div>
           <div className=' lg:col-span-4 bg-base-300 m-2 ml-5 lg:ml-0 mr-5 rounded-box '>
             <p  className=' font-bold text0-2xl p-4  '>Current Openings</p>
-            <ListingsCard listings={listings.data} />
+            <ListingsCard listings={listings.data}/>
           </div>
           <div className=' lg:col-span-3 bg-base-300 ml-5 m-2 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>Project directory ( recent job roles in the company)</p>

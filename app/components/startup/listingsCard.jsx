@@ -13,6 +13,7 @@ const ListingsCard = ({ listings }) => {
 
   const closeEditModal = () => {
     setOpenModalIndex(null);
+    window.location.reload();
   };
 
   if (listings.length === 0) {

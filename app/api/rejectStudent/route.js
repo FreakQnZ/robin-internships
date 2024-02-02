@@ -32,6 +32,7 @@ export async function POST(request) {
       student_phoneNumber
     });
 
+    listing.applicants = listing.applicants.filter(applicant => applicant.student_id !== student_id);
 
     // Save the updated startup document
     await startup.save();
