@@ -23,10 +23,10 @@ export async function POST(request) {
     }
 
 
-    const imgURL = "hello"
+    const {imgURL} = startup
 
     return NextResponse.json({
-      data: "hello",
+      data: imgURL,
       success: true,
     });
   } catch (error) {

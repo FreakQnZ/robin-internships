@@ -16,7 +16,7 @@ const StudentNavbar = (props) => {
       <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
         <FaSearch />
       </Link>
-      <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
+      <Link href="studentDashboard/acceptedListingsPage" className={props.act === 'accepted' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
         <FaCheck />
       </Link>
       <div className="flex-none gap-2">

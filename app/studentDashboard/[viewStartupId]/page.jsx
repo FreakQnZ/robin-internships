@@ -67,6 +67,7 @@ const StudentDB = async  ({params}) => {
   const retDataImg = await getImage()
 
 
+
   const openModal = () => {
     const modal = document.getElementById('modal');
     modal.style.display = 'block';
@@ -77,7 +78,7 @@ const StudentDB = async  ({params}) => {
 
       <div className=' w-full flex flex-col gap-4'>
         <div className=' flex gap-4 items-center justify-start w-full m-2 ml-10 mt-3'>
-          <div className=' w-20 h-20 overflow-hidden rounded-full'><Image src={+retDataImg.data} alt="student" width={200} height={200}/></div>
+          <div className=' w-20 h-20 overflow-hidden rounded-full'><Image src={retDataImg.data} alt="student" width={200} height={200}/></div>
           <p className=' text-2xl font-bold'>{retDataName.data}</p>
         </div>
         <div className=' w-full grid h-5/6 grid-cols-6 gap-2 '>

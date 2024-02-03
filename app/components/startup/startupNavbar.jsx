@@ -4,12 +4,16 @@ import {SignOutButton } from '@clerk/nextjs';
 import { PiSignOutBold } from "react-icons/pi";
 import { IoMdHome } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
+import { FaCheck } from "react-icons/fa";
 
 const StartupNavbar = () => {
   return (
     <div className="bg-[#5ac8fa] p-2 flex flex-col lg:h-full items-center justify-start gap-3 text-slate-200">
       <Link href="/startupDashboard" className='btn btn-ghost text-3xl btn-active'>
         <IoMdHome />
+      </Link>
+      <Link href="/startupDashboard/activeListingsForStartup" className='btn btn-ghost text-3xl btn-active'>
+        <FaCheck />
       </Link>
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">

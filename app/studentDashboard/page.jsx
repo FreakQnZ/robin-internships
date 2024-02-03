@@ -8,8 +8,6 @@ import Lor from '../components/student/lor';
 import ListingStatus from '../components/student/status';
 
 const StudentDB = async  () => {
-
-
   const user = await currentUser();
   const uId = user?.id;
   async function getStudentDetails() {
