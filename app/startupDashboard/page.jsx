@@ -51,7 +51,7 @@ const StudentDB = async  () => {
     <div className='lg:h-dvh w-full flex'>
       <StartupNavbar/>
       <div className=' w-full flex flex-col gap-4'>
-        <div className=' flex gap-4 items-center justify-start w-full m-2 ml-10 mt-3'>
+        <div className=' flex gap-4 items-center justify-start w-full p-2 pl-10 pt-3'>
           <div className=' w-20 h-20 overflow-hidden rounded-full'><Image src={user?.imageUrl} alt="student" width={200} height={200}/></div>
           <p className=' text-2xl font-bold'>{user?.firstName } {user?.lastName}</p>
         </div>

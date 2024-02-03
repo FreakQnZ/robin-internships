@@ -50,7 +50,7 @@ const ApplicantsCard = ({ applicants , listingId }) => {
   }
 
   return (
-    <>
+    <div className="grid 2xl:grid-cols-4 lg:grid-cols-3 grid-cols-1 overflow-y-scroll">
       {applicants.map((applicant, index) => (
         !hiddenCards.includes(index) && (
         <div key={index} className="card w-72 sm:w-60 xl:w-72 bg-base-100 shadow-xl m-2">
@@ -71,8 +71,8 @@ const ApplicantsCard = ({ applicants , listingId }) => {
           </div>
         </div> 
         )
-      ))}
-    </>
+      ))} 
+    </div>
   );
 };
 
