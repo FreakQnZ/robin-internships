@@ -60,7 +60,7 @@ const StartupDB = async  () => {
             <p  className=' font-bold text0-2xl p-4  '>About the startup</p>
             <p className='p-5 text-lg'>{retDataAbout?.data}</p>
           </div>
-          <div className=' bg-[#c8edfd] lg:col-span-4 m-2 ml-5 lg:ml-0 mr-5 rounded-box '>
+          <div className=' bg-[#c8edfd] lg:col-span-4 m-2 ml-5 lg:ml-0 mr-5 rounded-box overflow-y-scroll'>
             <p  className=' font-bold text0-2xl p-4  '>Current Openings</p>
             <ListingsCard listings={listings.data}/>
           </div>
