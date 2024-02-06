@@ -51,10 +51,10 @@ const Page = () => {
     userId : uId,
     lname: '',
     description: '',
-    domain: '',
+    domain: 'AT',
     stipend: '0',
     duration: 'Till AT',
-    email : '',
+    email : 'aatmatrisha@gmail.com',
     requirements : 'none',
     internsRequired : '69',
   });
@@ -96,12 +96,12 @@ const Page = () => {
             value={formData.lname}
             onChange={handleChange}
           />
-          <InputGroup1
+          {/* <InputGroup1
             name="domain"
             label="Club"
             value={formData.domain}
             onChange={handleChange}
-          />
+          /> */}
           {/* <InputGroup1
             name="stipend"
             label="Stipend in Rupees"
@@ -127,13 +127,13 @@ const Page = () => {
             value={formData.requirements}
             onChange={handleChange}
           /> */}
-          <InputGroup1
+          {/* <InputGroup1
             name="email"
             label="email of your startup"
             type = "email"
             value={formData.email}
             onChange={handleChange}
-          />
+          /> */}
           {/* <InputGroup1
             name="internsRequired"
             label="Interns Required"

@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <body suppressHydrationWarning={true}>
           <div className=' flex flex-col'>
             {children}
-            <Footer/>
+            {/* <Footer/> */}
           </div>
         </body>
       </html>
