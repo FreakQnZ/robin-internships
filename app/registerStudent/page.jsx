@@ -117,7 +117,7 @@ const Page = () => {
             <div className="navbar bg-blue-200">
               <a className="btn btn-ghost text-2xl">Student Onboarding</a>
             </div>
-          <form onSubmit={handleSubmit} className="flex flex-col border shadow-lg w-1/2 p-5 sm:p-10 gap-8 rounded-md m-5 ">
+          <form onSubmit={handleSubmit} className="flex flex-col border shadow-lg lg:w-1/2 w-5/6 p-5 gap-8 rounded-md m-5 ">
             <p className=' text-center text-xl font-semibold'>Start your Journey now!</p>
             {/* <InputGroup1
               name="age"
