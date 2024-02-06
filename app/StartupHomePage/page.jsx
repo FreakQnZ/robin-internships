@@ -80,18 +80,28 @@ function TrustedBy(){
     return(
     <div className=" flex flex-col gap-8  text-center">
         <h1 className=' text-4xl lg:text-5xl pt-6 font-bold p-3'>Trusted By</h1>
-        <div className='flex flex-col lg:flex-row font-semibold text-3xl gap-2 justify-evenly'>
-            <div >
-                <h2>102</h2>
+        <div className='flex item-center flex-col lg:flex-row font-semibold text-3xl gap-2 justify-evenly'>
+            <div>
+                <div>
+                    <Image src="/company1.png" width={122} height={122}/>
+                </div>
+                <p>Abhaya</p>
             </div>
             <div>
-                <h2>102</h2>
+                <div className='flex justify-center'>
+                 <Image src="/company2.png" width={97} height={97}/>
+                </div>
+               <p>Smart Chakra</p>
             </div>
             <div>
-                <h2>102</h2>
+            <div className='flex justify-center'>
+                <Image src="/company3.png" width={100} height={100}/>
+            </div>
+                <p>Vanadootha</p>
             </div>
             <div>
-                <h2>102</h2>
+                <Image src="/company4.png" width={150} height={150}/>
+                <p>Aatmatrisha</p>
             </div>
         </div>
     </div>
