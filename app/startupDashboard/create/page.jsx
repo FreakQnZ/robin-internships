@@ -109,18 +109,18 @@ const Page = () => {
             value={formData.stipend}
             onChange={handleChange}
           /> */}
-          <InputGroup1
+          {/* <InputGroup1
             name="duration"
             label="Internship Duration"
             value={formData.duration}
             onChange={handleChange}
-          />
-          {/* <InputGroup1
+          /> */}
+          <InputGroup1
             name="description"
             label="Internship Description"
             value={formData.description}
             onChange={handleChange}
-          /> */}
+          />
           {/* <InputGroup1
             name="requirements"
             label="Internship requirements"
