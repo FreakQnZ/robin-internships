@@ -92,13 +92,13 @@ const Page = () => {
         <form onSubmit={handleSubmit} className=" max-w-screen-lg h-full flex flex-col bg-white w-full p-5 sm:p-10 gap-8 rounded-md">
           <InputGroup1
             name="lname"
-            label="Name of the Listing"
+            label="Name of Domain"
             value={formData.lname}
             onChange={handleChange}
           />
           <InputGroup1
             name="domain"
-            label="Internship Domain"
+            label="Club"
             value={formData.domain}
             onChange={handleChange}
           />
