@@ -38,6 +38,38 @@ function InputGroup1({
   );
 }
 
+function InputGroup2({
+  label,
+  name,
+  value,
+  onChange,
+  type = "text",
+  disabled,
+}) {
+  return (
+    <div className="relative z-0 w-full">
+      <input
+        type={type}
+        id={name}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={`peer block py-2.5 px-1 w-full text-sm text-gray-600 bg-transparent border-0 border-b-[2px] appearance-none focus:outline-none focus:ring-0 focus:border-[#FF6464] ${
+          disabled ? "border-gray-300" : "border-gray-400"
+        }`}
+        placeholder=" "
+        disabled={disabled}
+      />
+      <label
+        htmlFor={name}
+        className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-8 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#FF6464] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8"
+      >
+        {label}
+      </label>
+    </div>
+  );
+}
+
 const Page = () => {
 
   const router = useRouter()
@@ -51,7 +83,7 @@ const Page = () => {
     userId : uId,
     lname: '',
     description: '',
-    domain: 'AT',
+    domain: '',
     stipend: '0',
     duration: 'Till AT',
     email : 'aatmatrisha@gmail.com',
@@ -92,16 +124,22 @@ const Page = () => {
         <form onSubmit={handleSubmit} className=" max-w-screen-lg h-full flex flex-col bg-white w-full p-5 sm:p-10 gap-8 rounded-md">
           <InputGroup1
             name="lname"
-            label="Name of Domain"
+            label="Name of Domain *"
             value={formData.lname}
             onChange={handleChange}
           />
-          {/* <InputGroup1
+          <InputGroup1
+            name="description"
+            label="Domain Description *"
+            value={formData.description}
+            onChange={handleChange}
+          />
+          <InputGroup2
             name="domain"
-            label="Club"
+            label="Google Forms (Only Sponsorships)"
             value={formData.domain}
             onChange={handleChange}
-          /> */}
+          />
           {/* <InputGroup1
             name="stipend"
             label="Stipend in Rupees"
@@ -115,12 +153,6 @@ const Page = () => {
             value={formData.duration}
             onChange={handleChange}
           /> */}
-          <InputGroup1
-            name="description"
-            label="Internship Description"
-            value={formData.description}
-            onChange={handleChange}
-          />
           {/* <InputGroup1
             name="requirements"
             label="Internship requirements"

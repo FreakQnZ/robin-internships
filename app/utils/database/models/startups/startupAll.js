@@ -30,7 +30,7 @@ const subTaskSchema = new mongoose.Schema({
   },
   domain: {
     type: String,
-    required: true,
+    required: false,
   },
   stipend: {
     type: Number,
@@ -42,7 +42,7 @@ const subTaskSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
   requirements : {
     type: String,

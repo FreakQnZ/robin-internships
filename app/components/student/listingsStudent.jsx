@@ -61,7 +61,7 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
               {/* <Link href={`/studentDashboard/${data?.startupId}`} target="_blank"><p className="py-4 btn bg-base-300">{data.startupName}</p></Link>  */}
               <p className="py-4">Club : {data.startupName}</p>
 
-              <p className="py-4">Domain : {data.domain}</p>
+              <p className={data.domain == '' ? 'hidden' : 'py-4'}>{data.domain != '' ?<div>Google Form :  <Link className=' text-blue-500 underline underline-offset-2' href={data.domain} target="_blank">{"Click Here"}</Link> </div> : ''}</p>
               {/* <p className="py-4">Duration : {data.duration}</p> */}
               {/* <p className="py-4">Stipend : {data.stipend}</p> */}
               <p className="py-4">Description: {data.description}</p>

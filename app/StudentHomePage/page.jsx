@@ -10,7 +10,7 @@ function Hero() {
             <div className=' flex flex-col'>
             <h1 className="lg:text-5xl text-3xl leading-9 font-semibold lg:leading-relaxed">Start Your Journey: <br /> Find Internships that  <br /> don&apos;t require WorkEx</h1>
             <p className="py-6 tracking-wider">At Robin internships, you can find a wide range of  internships at startups. These internships do NOT require you to have prior work experience or  technical skill.</p>
-            <div><button className="btn btn-primary btn-wide">Get Started</button></div>
+            <div><button className="btn btn-primary btn-wide btn-disabled">Get Started</button></div>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@ function Information1(){
                 <div>
                 <h1 className="text-5xl font-bold">Join the Internship <br /> Revolution</h1>
                 <p className="py-6">Our platform is tailored for students that are starting off with interning. <br /> At Robin internships, find internships that <br /> dont always ask you for prior work experience or certifications! </p>
-                <button className="btn btn-primary btn-wide">Join Now!</button>
+                <button className="btn btn-primary btn-wide btn-disabled">Join Now!</button>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@ function Information2(){
             <div>
             <h1 className="text-5xl font-bold">Boost Your Resume</h1>
             <p className="py-6">Our platform is built for students to gain experience through <br /> working at startups and also by offering internships in multiple domains for <br /> students to boost their resumes!</p>
-            <button className="btn btn-primary btn-wide">Join Now!</button>
+            <button className="btn btn-primary btn-wide btn-disabled">Join Now!</button>
             </div>
         </div>
         </div>
@@ -86,22 +86,32 @@ function Information2(){
 function TrustedBy(){
     return(
         <div className=" flex flex-col gap-8  text-center">
-            <h1 className=' text-4xl lg:text-5xl pt-6 font-bold p-3'>Trusted By</h1>
-            <div className='flex flex-col lg:flex-row font-semibold text-3xl gap-2 justify-evenly'>
-                <div >
-                    <h2>102</h2>
-                </div>
+        <h1 className=' text-4xl lg:text-5xl pt-6 font-bold p-3'>Trusted By</h1>
+        <div className='flex item-center flex-col lg:flex-row font-semibold text-3xl gap-2 justify-evenly'>
+            <div>
                 <div>
-                    <h2>102</h2>
+                    <Image src="/company1.png" width={122} height={122}/>
                 </div>
-                <div>
-                    <h2>102</h2>
+                <p>Abhaya</p>
+            </div>
+            <div>
+                <div className='flex justify-center'>
+                 <Image src="/company2.png" width={97} height={97}/>
                 </div>
-                <div>
-                    <h2>102</h2>
-                </div>
+               <p>Smart Chakra</p>
+            </div>
+            <div>
+            <div className='flex justify-center'>
+                <Image src="/company3.png" width={100} height={100}/>
+            </div>
+                <p>Vanadootha</p>
+            </div>
+            <div>
+                <Image src="/company4.png" width={150} height={150}/>
+                <p>Aatmatrisha</p>
             </div>
         </div>
+    </div>
     )
 }
 

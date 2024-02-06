@@ -15,7 +15,7 @@ function Hero() {
             <div className=' flex flex-col items-start'>
             <h1 className="lg:text-5xl text-3xl leading-9 font-semibold lg:leading-relaxed">Find Interns for <br /> Your Startup now!</h1>
             <p className="py-6 my-6 tracking-wider">Hire short term, competent interns for your startup now at Robin internships!</p>
-            <div className='flex justify-center'><button className="btn btn-primary btn-wide">Get Started</button></div>
+            <div className='flex justify-center'><button className="btn btn-primary btn-wide btn-disabled">Get Started</button></div>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@ function Information1(){
                 <div>
                 <h1 className="text-5xl font-bold">Join the Internship <br /> Revolution</h1>
                 <p className="py-6">Our platform is tailored for students that are starting off with interning. <br /> At Robin internships, find internships that <br /> dont always ask you for prior work experience or certifications! </p>
-                <button className="btn btn-primary btn-wide">Join Now!</button>
+                <button className="btn btn-primary btn-wide btn-disabled">Join Now!</button>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@ function Sustainable(){
             <p className=" text-center font-semibold lg:text-3xl text-xl">Robin Internships organisations can<br /></p>
             <p className=" text-center font-semibold lg:text-3xl text-xl">hire interns to fill in any roles and also</p>
             <p className=" text-center font-semibold lg:text-3xl text-xl">to work for any range of tenures.</p>
-            <div className=' flex justify-center p-2 m-2'><button className="btn btn-primary btn-wide">Join Now!</button></div>
+            <div className=' flex justify-center p-2 m-2'><button className="btn btn-primary btn-wide btn-disabled">Join Now!</button></div>
         </div>
     )
 }

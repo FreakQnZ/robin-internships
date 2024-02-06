@@ -56,7 +56,7 @@ const StartupDB = async  () => {
           <p className=' text-2xl font-bold'>{user?.firstName } {user?.lastName}</p>
         </div>
         <div className=' w-full grid h-5/6 lg:grid-cols-6 grid-cols-1 gap-2  '>
-          <div className=' lg:overflow-y-scroll lg:col-span-2 bg-base-300 ml-5 m-2 rounded-box bg-green-200'>
+          <div className=' lg:overflow-y-scroll lg:col-span-2 ml-5 m-2 rounded-box bg-green-200'>
             <p  className=' font-bold text0-2xl p-4  '>About the startup</p>
             <p className='p-5 text-lg'>{retDataAbout?.data}</p>
           </div>
