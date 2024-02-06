@@ -15,7 +15,7 @@ const StartupNavbar = () => {
       <Link href="/startupDashboard/activeListingsForStartup" className='btn btn-ghost text-3xl btn-active'>
         <FaCheck />
       </Link>
-      <div className="flex-none gap-2">
+      <div className="flex-none gap-2 hidden">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost text-3xl ">
             <CgProfile />

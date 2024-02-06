@@ -50,7 +50,7 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
       </div>
       <div>
         <button onClick={() => openEditModal(index)} className="btn btn-sm btn-primary mr-2 tooltip" data-tip="view internship"><FaPlus /></button>
-        <button className="btn btn-sm"><IoMdClose /></button>
+        {/* <button className="btn btn-sm"><IoMdClose /></button> */}
 
         {openModalIndex === index && (
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">

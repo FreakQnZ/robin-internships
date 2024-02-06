@@ -57,8 +57,8 @@ const StudentDB = async  () => {
               <div className=' w-48 h-48 overflow-hidden rounded-full hidden lg:block'><Image src={user?.imageUrl} alt="student" width={200} height={200}/></div>
               <div className='flex flex-col gap-6'>
                 <p className=' text-2xl font-bold'>{user?.firstName } {user?.lastName}</p>
-                <a href={details?.data?.student?.resume} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400' style={{backgroundColor: "#ffffff"}}>Student Resume</a>
-                <a href={details?.data?.student?.portfolio} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400' style={{backgroundColor: "#ffffff"}}>Portfolio</a>
+                <a href={details?.data?.student?.resume} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400 btn-disabled' style={{backgroundColor: "#ffffff"}}>Student Resume</a>
+                <a href={details?.data?.student?.portfolio} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400 btn-disabled' style={{backgroundColor: "#ffffff"}}>Portfolio</a>
               </div>
             </div>
             <Stats/>
