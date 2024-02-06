@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 // import NavbarHome from '../components/navbarHome';
 import { useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation'
@@ -46,6 +46,7 @@ const Page = () => {
   const uId = user?.id;
   const imgURL = user?.imageUrl;
 
+  // const [isUserVerified, setIsUserVerified] = useState(null);
   const [formData, setFormData] = useState({
     userId : uId,
     name: '',
@@ -57,6 +58,24 @@ const Page = () => {
     linkedin: '',
     imgURL: imgURL,
   });
+
+  // useEffect(() => {
+  //   async function checkUserExists() {
+  //     const res = await fetch(`api/verify`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ userId: uId }),
+  //     });
+  //     const data = await res.json();
+  //     setIsUserVerified(data);
+  //   }
+  //   checkUserExists();
+  // }, []);
+
+  // console.log("after",isUserVerified)
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -85,6 +104,8 @@ const Page = () => {
   return (
     <div className=' flex flex-col items-center h-full'>
       {/* <NavbarHome/> */}
+    {/* {isUserVerified?.success === true ? ( */}
+      <>
       <div className="navbar bg-blue-200">
         <a className="btn btn-ghost text-2xl">Startup Onboarding</a>
       </div>
@@ -137,7 +158,10 @@ const Page = () => {
 
       <button type="submit" className=" btn">Submit</button>
     </form>
-    </div>
+    </>
+    {/* ):(<h1>Already Logged In</h1>)} */}
+      </div>
+
   );
 }
 

@@ -52,11 +52,11 @@ const Page = () => {
     lname: '',
     description: '',
     domain: '',
-    stipend: '',
-    duration: '',
+    stipend: '0',
+    duration: 'Till AT',
     email : '',
-    requirements : '',
-    internsRequired : '',
+    requirements : 'none',
+    internsRequired : '69',
   });
 
   const handleChange = (e) => {
@@ -102,31 +102,31 @@ const Page = () => {
             value={formData.domain}
             onChange={handleChange}
           />
-          <InputGroup1
+          {/* <InputGroup1
             name="stipend"
             label="Stipend in Rupees"
             type="number"
             value={formData.stipend}
             onChange={handleChange}
-          />
+          /> */}
           <InputGroup1
             name="duration"
             label="Internship Duration"
             value={formData.duration}
             onChange={handleChange}
           />
-          <InputGroup1
+          {/* <InputGroup1
             name="description"
             label="Internship Description"
             value={formData.description}
             onChange={handleChange}
-          />
-          <InputGroup1
+          /> */}
+          {/* <InputGroup1
             name="requirements"
             label="Internship requirements"
             value={formData.requirements}
             onChange={handleChange}
-          />
+          /> */}
           <InputGroup1
             name="email"
             label="email of your startup"
@@ -134,13 +134,13 @@ const Page = () => {
             value={formData.email}
             onChange={handleChange}
           />
-          <InputGroup1
+          {/* <InputGroup1
             name="internsRequired"
             label="Interns Required"
             type = "number"
             value={formData.internsRequired}
             onChange={handleChange}
-          />
+          /> */}
           
 
           <button type="submit" className=" btn bg-blue-400 hover:bg-blue-300" onClick={()=>setOpen(!open)}>Create Listing</button>

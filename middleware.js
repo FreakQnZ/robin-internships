@@ -6,7 +6,7 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   publicRoutes: ['/', '/about', '/contact', '/LandingPage', '/StartupHomePage', '/StudentHomePage' ],
   // ignoredRoutes: ['/api/all', '/api/new', '/api/update', '/api/delete'],
-  ignoredRoutes: ['/api/verify', '/api/new', '/api/newStartup', '/api/getAboutUs', '/api/getListing','/api/addLor','/api/addResume','/api/addPortfolio','/api/applyForListing','/api/getListingsForStartup', '/api/studentDetails','/api/getStartupImg','/api/getStartupName','/api/getApplied','/api/acceptStudent','/api/rejectStudent','/api/getAcceptedListingsForStudent','/api/getIsActiveListingsForStartup'],
+  ignoredRoutes: ['/api/verify', '/api/new', '/api/newStartup', '/api/getAboutUs', '/api/getListing','/api/addLor','/api/addResume','/api/addPortfolio','/api/applyForListing','/api/getListingsForStartup', '/api/studentDetails','/api/getStartupImg','/api/getStartupName','/api/getApplied','/api/acceptStudent','/api/rejectStudent','/api/getAcceptedListingsForStudent','/api/getIsActiveListingsForStartup','/api/rejectAcceptedStudent'],
 });
  
 export const config = {

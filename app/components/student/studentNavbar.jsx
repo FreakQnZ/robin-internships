@@ -13,9 +13,9 @@ const StudentNavbar = (props) => {
       <Link href="/studentDashboard" className={props.act === 'home' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
          <IoMdHome />
       </Link>
-      <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
+      {/* <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
         <FaSearch />
-      </Link>
+      </Link> */}
       <Link href="studentDashboard/acceptedListingsPage" className={props.act === 'accepted' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
         <FaCheck />
       </Link>
