@@ -84,11 +84,11 @@ const Page = () => {
     lname: '',
     description: '',
     domain: '',
-    stipend: '0',
-    duration: 'Till AT',
-    email : 'aatmatrisha@gmail.com',
-    requirements : 'none',
-    internsRequired : '69',
+    stipend: '',
+    duration: '',
+    email : '',
+    requirements : '',
+    internsRequired : '',
   });
 
   const handleChange = (e) => {
@@ -124,55 +124,58 @@ const Page = () => {
         <form onSubmit={handleSubmit} className=" max-w-screen-lg h-full flex flex-col bg-white w-full p-5 sm:p-10 gap-8 rounded-md">
           <InputGroup1
             name="lname"
-            label="Name of Domain *"
+            label="Name of Internship *"
             value={formData.lname}
             onChange={handleChange}
           />
+
+          <InputGroup1
+            name="domain"
+            label="Domain"
+            value={formData.domain}
+            onChange={handleChange}
+          />
+
           <InputGroup1
             name="description"
             label="Domain Description *"
             value={formData.description}
             onChange={handleChange}
           />
-          <InputGroup2
-            name="domain"
-            label="Google Forms (Only Sponsorships)"
-            value={formData.domain}
-            onChange={handleChange}
-          />
-          {/* <InputGroup1
+
+          <InputGroup1
             name="stipend"
             label="Stipend in Rupees"
             type="number"
             value={formData.stipend}
             onChange={handleChange}
-          /> */}
-          {/* <InputGroup1
+          />
+          <InputGroup1
             name="duration"
             label="Internship Duration"
             value={formData.duration}
             onChange={handleChange}
-          /> */}
-          {/* <InputGroup1
+          />
+          <InputGroup1
             name="requirements"
             label="Internship requirements"
             value={formData.requirements}
             onChange={handleChange}
-          /> */}
-          {/* <InputGroup1
+          />
+          <InputGroup1
             name="email"
             label="email of your startup"
             type = "email"
             value={formData.email}
             onChange={handleChange}
-          /> */}
-          {/* <InputGroup1
+          />
+          <InputGroup1
             name="internsRequired"
             label="Interns Required"
             type = "number"
             value={formData.internsRequired}
             onChange={handleChange}
-          /> */}
+          />
           
 
           <button type="submit" className=" btn bg-blue-400 hover:bg-blue-300" onClick={()=>setOpen(!open)}>Create Listing</button>

@@ -13,13 +13,13 @@ const StudentNavbar = (props) => {
       <Link href="/studentDashboard" className={props.act === 'home' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
          <IoMdHome />
       </Link>
-      {/* <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
+      <Link href="studentDashboard/search" className={props.act === 'search' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
         <FaSearch />
-      </Link> */}
+      </Link>
       <Link href="studentDashboard/acceptedListingsPage" className={props.act === 'accepted' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
         <FaCheck />
       </Link>
-      <div className="flex-none gap-2 hidden">
+      <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className={props.act === 'utils' ? 'btn btn-ghost text-3xl btn-active' : 'btn btn-ghost text-3xl'}>
             <CgProfile />

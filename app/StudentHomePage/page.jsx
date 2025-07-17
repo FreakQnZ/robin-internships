@@ -10,7 +10,7 @@ function Hero() {
             <div className=' flex flex-col'>
             <h1 className="lg:text-5xl text-3xl leading-9 font-semibold lg:leading-relaxed">Start Your Journey: <br /> Find Internships that  <br /> don&apos;t require WorkEx</h1>
             <p className="py-6 tracking-wider">At Robin internships, you can find a wide range of  internships at startups. These internships do NOT require you to have prior work experience or  technical skill.</p>
-            <div><button className="btn btn-primary btn-wide btn-disabled">Get Started</button></div>
+            <div><button className="btn btn-primary btn-wide">Get Started</button></div>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@ function Information1(){
                 <div>
                 <h1 className="text-5xl font-bold">Join the Internship <br /> Revolution</h1>
                 <p className="py-6">Our platform is tailored for students that are starting off with interning. <br /> At Robin internships, find internships that <br /> dont always ask you for prior work experience or certifications! </p>
-                <button className="btn btn-primary btn-wide btn-disabled">Join Now!</button>
+                <button className="btn btn-primary btn-wide">Join Now!</button>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@ function Information2(){
             <div>
             <h1 className="text-5xl font-bold">Boost Your Resume</h1>
             <p className="py-6">Our platform is built for students to gain experience through <br /> working at startups and also by offering internships in multiple domains for <br /> students to boost their resumes!</p>
-            <button className="btn btn-primary btn-wide btn-disabled">Join Now!</button>
+            <button className="btn btn-primary btn-wide">Join Now!</button>
             </div>
         </div>
         </div>

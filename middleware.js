@@ -6,10 +6,15 @@ import { authMiddleware } from "@clerk/nextjs";
 export default authMiddleware({
   publicRoutes: ['/', '/about', '/contact', '/LandingPage', '/StartupHomePage', '/StudentHomePage' ],
   // ignoredRoutes: ['/api/all', '/api/new', '/api/update', '/api/delete'],
-  ignoredRoutes: ['/api/verify', '/api/new', '/api/newStartup', '/api/getAboutUs', '/api/getListing','/api/addLor','/api/addResume','/api/addPortfolio','/api/applyForListing','/api/getListingsForStartup', '/api/studentDetails','/api/getStartupImg','/api/getStartupName','/api/getApplied','/api/acceptStudent','/api/rejectStudent','/api/getAcceptedListingsForStudent','/api/getIsActiveListingsForStartup','/api/rejectAcceptedStudent'],
+  ignoredRoutes: ['/api/verify', '/api/new', '/api/newStartup', '/api/getAboutUs', '/api/getListing','/api/addLor','/api/addResume','/api/addPortfolio','/api/applyForListing','/api/getListingsForStartup', '/api/studentDetails','/api/getStartupImg','/api/getStartupName','/api/getApplied','/api/acceptStudent','/api/rejectStudent','/api/getAcceptedListingsForStudent','/api/getIsActiveListingsForStartup','/api/rejectAcceptedStudent','/api/getStudentEmailId','/api/getStudentNames','/api/getStudentSRN','/api/getListingsForStartup', '/api/studentDetails','/api/getStartupImg','/api/getStartupName','/api/getApplied','/api/acceptStudent','/api/rejectStudent','/api/getAcceptedListingsForStudent','/api/getIsActiveListingsForStartup','/api/rejectAcceptedStudent','/api/getStudentEmailId','/api/getStudentNames','/api/getStudentPhNo'],
   debug: true,
 });
  
 export const config = {
-  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+  matcher: [
+    // Skip Next.js internals and all static files, unless found in search params
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    // Always run for API routes
+    '/(api|trpc)(.*)',
+  ],
 };

@@ -61,8 +61,12 @@ function Start(){
                 <div className="">
                     <h1 className="mb-5 text-5xl font-bold pb-10">Start Your Journey Now!</h1>
                     <div className=' flex gap-4 justify-center'>
-                        <button className="btn lg:btn-wide btn-primary btn-disabled">Start Now</button>
-                        <button className="btn lg:btn-wide btn-primary btn-disabled">Contact Us</button>
+                    <button className="btn lg:btn-wide btn-primary hover:bg-white hover:text-blue-500 hover:border-blue-500 border-transparent transition duration-300">
+                        Start Now
+                    </button>
+                    <button className="btn lg:btn-wide btn-primary hover:bg-white hover:text-blue-500 hover:border-blue-500 border-transparent transition duration-300">
+                        Contact Us
+                    </button>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ const ListingsCard = ({ listings }) => {
     window.location.reload();
   };
 
-  if (listings.length === 0) {
+  if (!listings || listings.length === 0) {
     return (
       <div className=" w-full text-3xl p-4">
         <p>No listings</p>

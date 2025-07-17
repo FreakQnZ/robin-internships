@@ -35,14 +35,14 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
         {openModalIndex === index && (
           <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="modal-box">
-              {/* <h3 className="font-bold text-lg">Internship : {data.lname}</h3> */}
+              <h3 className="font-bold text-lg">Internship : {data.lname}</h3>
               <h3 className="font-bold text-lg">{data.lname}</h3>
 
-              {/* <Link href={`/studentDashboard/${data?.startupId}`} target="_blank"><p className="py-4">Company name : {data.startupName}</p></Link>  */}
+              <Link href={`/studentDashboard/${data?.startupId}`} target="_blank"><p className="py-4">Company name : {data.startupName}</p></Link> 
               <p className="py-4">Club : {data.startupName}</p>
               <p className="py-4">Domain : {data.domain}</p>
-              {/* <p className="py-4">Duration : {data.duration}</p> */}
-              {/* <p className="py-4">Stipend : {data.stipend}</p> */}
+              <p className="py-4">Duration : {data.duration}</p>
+              <p className="py-4">Stipend : {data.stipend}</p>
               <p className="py-4">Description: {data.description}</p>
               <div className="modal-action justify-between">
                 <button onClick={closeEditModal} className="btn">Close</button>

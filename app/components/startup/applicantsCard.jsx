@@ -59,7 +59,8 @@ const ApplicantsCard = ({ applicants , listingId }) => {
             <p>{applicant.student_college}</p>
             <p>{applicant.student_email}</p>
             <p>{applicant.student_phoneNumber}</p>
-            {/* <a className=" link">View CV</a> */}
+
+
             <div className="card-actions justify-between">
               <button className="btn btn-success" onClick={() => acceptStudent(index)}>Accept</button>
               <button className="btn bg-red-200" onClick={()=>rejectStudent(index)}>Reject</button>

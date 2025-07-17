@@ -28,7 +28,8 @@ const StudentDB = async  () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ userId: uId}),
-    }, { cache: 'no-store' });
+      cache: 'no-store' 
+    }, );
     return result.json();
   }
 
@@ -57,8 +58,8 @@ const StudentDB = async  () => {
               <div className=' w-48 h-48 overflow-hidden rounded-full hidden lg:block'><Image src={user?.imageUrl} alt="student" width={200} height={200}/></div>
               <div className='flex flex-col gap-6'>
                 <p className=' text-2xl font-bold'>{user?.firstName } {user?.lastName}</p>
-                <a href={details?.data?.student?.resume} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400 btn-disabled' style={{backgroundColor: "#ffffff"}}>Student Resume</a>
-                <a href={details?.data?.student?.portfolio} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400 btn-disabled' style={{backgroundColor: "#ffffff"}}>Portfolio</a>
+                <a href={details?.data?.student?.resume} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400' style={{backgroundColor: "#ffffff"}}>Student Resume</a>
+                <a href={details?.data?.student?.portfolio} target='_blank' className='btn btn-wide border-1 border-zinc-300 hover:border-blue-400' style={{backgroundColor: "#ffffff"}}>Portfolio</a>
               </div>
             </div>
             <Stats/>
@@ -71,32 +72,44 @@ const StudentDB = async  () => {
           <div className=' lg:h-2/3 p-5 flex flex-col gap-2'>
             <p className=' text-2xl'>Active Internships</p>
             <div className=' flex-1 bg-[#c8edfd] w-full rounded-box p-2 overflow-y-scroll flex flex-col gap-2'>
-              {listings.map((listing, index) => (
-                  <ListingsStudent
-                    key={index}
-                    data={listing}
-                    index={index}
-                    firstName={user?.firstName}
-                    lastName={user?.lastName}
-                    email={details?.data?.student?.email}
-                    college={details?.data?.student?.college}
-                    userId={uId}
-                    studentPhoneNumber = {details?.data?.student?.phoneNumber}
-                  />
-                ))}
+            {Array.isArray(listings) && listings.length > 0 ? (
+                listings
+                  .reverse()
+                  .map((listing, index) => (
+                    <ListingsStudent
+                      key={index}
+                      data={listing}
+                      index={index}
+                      firstName={user?.firstName}
+                      lastName={user?.lastName}
+                      email={details?.data?.student?.email}
+                      college={details?.data?.student?.college}
+                      userId={uId}
+                      studentPhoneNumber={details?.data?.student?.phoneNumber}
+                    />
+                  ))
+              ) : (
+                <p className="text-gray-500 text-center py-4">No listings available.</p>
+          )}
+
+
             </div>
           </div>
           <div className=' lg:h-1/3 p-5 flex flex-col gap-2'>
             <p className=' text-2xl'>Application Status</p>
             <div className=' flex-1 bg-base-200 w-full rounded-box p-2 overflow-y-scroll flex flex-col gap-2'>
-              {appliedListings.data.map((listing, index) => (
-                <ListingStatus
-                  key={index}
-                  companyName={listing.startupName}
-                  listingName={listing.listingName}
-                  status={listing.status}
-                />
-              ))}
+            {Array.isArray(appliedListings?.data) && appliedListings.data.length > 0 ? (
+                appliedListings.data.map((listing, index) => (
+                  <ListingStatus
+                    key={index}
+                    companyName={listing.startupName}
+                    listingName={listing.listingName}
+                    status={listing.status}
+                  />
+                ))
+              ) : (
+                <p className="text-gray-500 text-center py-4">No applications yet.</p>
+          )}
             </div>
           </div>
         </div>

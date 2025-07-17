@@ -20,7 +20,7 @@ const Navbar = async () => {
         return res.json();
       }
 
-      const isUserVerified = await checkUserExists()
+      const isUserVerified = await checkUserExists();
 
   return (
     <div className="navbar bg-base-100">
@@ -32,9 +32,8 @@ const Navbar = async () => {
         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
           <Link href="/StudentHomePage" className='hover:text-blue-300 cursor-pointer'>Student</Link>
           <Link href="/StartupHomePage" className='hover:text-blue-300 cursor-pointer'>Startup</Link>
-          {/* <Link href="" className='hover:text-blue-300 cursor-pointer'>College</Link> */}
-          {/* <Link href="" className='hover:text-blue-300 cursor-pointer'>About Us</Link> */}
-          {/* <Link href="" className='hover:text-blue-300 cursor-pointer'>Contact Us</Link> */}
+          <Link href="" className='hover:text-blue-300 cursor-pointer'>About Us</Link>
+          <Link href="" className='hover:text-blue-300 cursor-pointer'>Contact Us</Link>
         </ul>
       </div>
       <Link href = "/"><Image className = " rounded-xl" src = "/logo.jpeg" width={50} height={50} /></Link>
@@ -43,9 +42,8 @@ const Navbar = async () => {
       <ul className="menu menu-horizontal px-1 lg:space-x-8 text-lg">
         <Link href="/StudentHomePage" className='hover:text-blue-300 cursor-pointer'>Student</Link>
         <Link href="/StartupHomePage" className='hover:text-blue-300 cursor-pointer'>Startup</Link>
-        {/* <Link href="" className='hover:text-blue-300 cursor-pointer'>College</Link> */}
-        {/* <Link href="" className='hover:text-blue-300 cursor-pointer'>About Us</Link> */}
-        {/* <Link href="" className='hover:text-blue-300 cursor-pointer'>Contact Us</Link> */}
+        <Link href="" className='hover:text-blue-300 cursor-pointer'>About Us</Link>
+        <Link href="" className='hover:text-blue-300 cursor-pointer'>Contact Us</Link>
       </ul>
     </div>
     <div className="navbar-end">
