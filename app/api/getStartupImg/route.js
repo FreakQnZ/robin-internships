@@ -1,30 +1,17 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/app/utils/database/connect';
-import { startupAll } from '@/app/utils/database/models/startups/startupAll';
+import prisma from '@/app/utils/database/prismaClient';
 
 export async function POST(request) {
   try {
-
-    connectDB();
-
-    // Get the userId from the query parameters
     const { userId } = await request.json();
-
-
-    // Find the startup in the database using the userId
-    const startup = await startupAll.findOne({ userId });
-
+    const startup = await prisma.startup.findUnique({ where: { userId } });
     if (!startup) {
-      // If startup not found, return an appropriate response
       return NextResponse.json({
         message: 'Startup not found',
         success: false,
       });
     }
-
-
-    const {imgURL} = startup
-
+    const { imgURL } = startup;
     return NextResponse.json({
       data: imgURL,
       success: true,

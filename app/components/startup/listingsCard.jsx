@@ -42,7 +42,7 @@ const ListingsCard = ({ listings }) => {
                 className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50"
               >
                 <div className="bg-base-100 p-4 rounded-xl shadow-md w-4/5 m-2 h-5/6 flex flex-col justify-between">
-                  <ApplicantsCard applicants={listing.applicants} listingId = {listing._id}/>
+                  <ApplicantsCard applications={listing.applications} listingId={listing.id}/>
                   <button className=' btn btn-primary w-full' onClick={closeEditModal}>Close</button>
                 </div>
               </div>

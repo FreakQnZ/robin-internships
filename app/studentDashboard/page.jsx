@@ -10,43 +10,58 @@ import ListingStatus from '../components/student/status';
 const StudentDB = async  () => {
   const user = await currentUser();
   const uId = user?.id;
+
   async function getStudentDetails() {
     const result = await fetch(`${process.env.API_HOST}/studentDetails`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId: uId}),
-    }, { cache: 'no-store' });
-    return result.json();
+      body: JSON.stringify({ userId: uId }),
+      cache: 'no-store',
+    });
+    
+    const data = await result.json();
+    console.log('Full response:', data); // Add this line
+    return data;
   }
-
+  
   async function getListing() {
     const result = await fetch(`${process.env.API_HOST}/getListing`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId: uId}),
-      cache: 'no-store' 
-    }, );
+      body: JSON.stringify({ userId: uId }),
+      cache: 'no-store', // ✅ Fix here too
+    });
     return result.json();
   }
-
+  
   async function getApplied() {
     const result = await fetch(`${process.env.API_HOST}/getApplied`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId: uId}),
-    }, { cache: 'no-store' });
+      body: JSON.stringify({ userId: uId }),
+      cache: 'no-store', // ✅ Fix here as well
+    });
     return result.json();
   }
+  
+  
 
   const listings = await getListing()
   const details = await getStudentDetails()
   const appliedListings = await getApplied()
+
+  // Debug logs for student details
+
+  console.log('Fetched student details:', details?.data?.student);
+
+
+  console.log("--------------------------------")
 
   return (
     <div className='lg:h-dvh w-full flex'>
@@ -103,7 +118,7 @@ const StudentDB = async  () => {
                   <ListingStatus
                     key={index}
                     companyName={listing.startupName}
-                    listingName={listing.listingName}
+                    listingName={listing.lname}
                     status={listing.status}
                   />
                 ))

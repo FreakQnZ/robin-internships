@@ -1,12 +1,8 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/app/utils/database/connect';
-import { startupAll } from '@/app/utils/database/models/startups/startupAll';
+import prisma from '@/app/utils/database/prismaClient';
 
 export async function POST(request) {
   try {
-    connectDB();
-
-    // Parse the request body to get the listing details
     const {
       userId,
       lname,
@@ -20,40 +16,36 @@ export async function POST(request) {
     } = await request.json();
 
     // Find the startup in the database using the userId
-    const startup = await startupAll.findOne({ userId });
-
+    const startup = await prisma.startup.findUnique({ where: { userId } });
     if (!startup) {
-      // If startup not found, return an appropriate response
       return NextResponse.json({
         message: 'Startup not found',
         success: false,
       });
     }
 
-    // Create a new listing
-    const newListing = {
-      lname,
-      domain,
-      stipend,
-      duration,
-      description,
-      requirements,
-      email,
-      internsRequired,
-      applicants: [], // Initialize the applicants array for the new listing
-    };
-
-    // Add the new listing to the listings array of the startup
-    startup.listings.push(newListing);
-
-    // Save the updated startup document
-    await startup.save();
+    // Create a new listing associated with the startup
+    await prisma.listing.create({
+      data: {
+        lname,
+        domain,
+        stipend: parseInt(stipend) || 0,
+        duration,
+        description,
+        requirements,
+        email,
+        internsRequired: parseInt(internsRequired) || 0,
+        startupId: startup.id,
+        // isActive and applicants default
+      },
+    });
 
     return NextResponse.json({
       message: 'Listing created successfully',
       success: true,
     });
   } catch (error) {
+    console.error('Error in /api/createListing:', error);
     return NextResponse.json({
       message: error.message,
       success: false,

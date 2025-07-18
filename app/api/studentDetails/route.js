@@ -1,31 +1,29 @@
 import { NextResponse } from 'next/server';
-import { studentAll } from '@/app/utils/database/models/student/studentAll';
-import { connectDB } from '@/app/utils/database/connect';
+import prisma from '@/app/utils/database/prismaClient';
 
 export async function POST(request) {
   try {
-
-    connectDB();
-
-    const  {userId}  = await request.json();
-
-    // Find the student in the database using the userId
-    const student = await studentAll.findOne({ userId });
-
+    const { userId } = await request.json();
+    console.log('this is the userId:', userId);
+    const student = await prisma.student.findUnique({ where: { userId } });
+    console.log('this is the student:', student);
     if (!student) {
-      // If student not found, return an appropriate response
       return NextResponse.json({
         message: 'Student not found',
         success: false,
       });
     }
-
-    // If student is found, return the details
+        // Convert BigInt to string for JSON serialization
+    const studentData = {
+      ...student,
+      phoneNumber: student.phoneNumber
+    };
+    
     return NextResponse.json({
       message: 'Student details retrieved successfully',
       success: true,
       data: {
-        student,
+        student: studentData,
       },
     });
   } catch (error) {

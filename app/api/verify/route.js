@@ -1,31 +1,26 @@
 
 import { NextResponse } from 'next/server'
-import { userAll } from '../../utils/database/models/allusers/userall';
-import { connectDB } from '@/app/utils/database/connect';
+import prisma from '@/app/utils/database/prismaClient';
 
 export async function POST(request) {
   try {
-    connectDB();
-    const {userId} = await request.json()
-
-    const curr_user = await userAll.findOne({ userId })
+    const { userId } = await request.json();
+    const curr_user = await prisma.userAll.findUnique({ where: { userId } });
     if (!curr_user) {
       return NextResponse.json({
         message: "User not found",
         success: false
-      })
+      });
     }
-
     return NextResponse.json({
       message: "User verified",
       success: true,
       role: curr_user.role
-    })
-    
+    });
   } catch (error) {
     return NextResponse.json({
       message: error.message,
       success: false
-    })
+    });
   }
 }

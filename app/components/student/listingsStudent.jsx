@@ -33,12 +33,24 @@ const ListingsStudent = ({ data, index, firstName, lastName, email, college, use
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userId, startupId: data?.startupId, listingId: data?._id, studentName: `${firstName} ${lastName}`, studentEmail: email, studentCollege: college ,studentPhoneNumber: studentPhoneNumber}),
-    }, { cache: 'no-store' });
+      body: JSON.stringify({
+        userId,
+        listingId: data?.id,
+        studentName: `${firstName} ${lastName}`,
+        studentEmail: email,
+        studentCollege: college,
+        studentPhoneNumber: studentPhoneNumber
+      }),
+    });
+    const response = await result.json();
     closeEditModal();
     handleToast();
-    window.location.reload();
-    return result.json();
+    if (response.success) {
+      window.location.reload();
+    } else {
+      alert(response.message || 'Failed to apply.');
+    }
+    return response;
   }
 
   return (

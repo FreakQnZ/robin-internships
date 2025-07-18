@@ -1,31 +1,13 @@
 import { NextResponse } from 'next/server';
-import { studentAll } from '@/app/utils/database/models/student/studentAll';
-import { connectDB } from '@/app/utils/database/connect';
+import prisma from '@/app/utils/database/prismaClient';
 
 export async function POST(request) {
   try {
-    connectDB();
-
     const { userId, resume } = await request.json();
-
-    // Find the student in the database using the userId
-    const student = await studentAll.findOne({ userId });
-
-    if (!student) {
-      // If student not found, return an appropriate response
-      return NextResponse.json({
-        message: 'Student not found',
-        success: false,
-      });
-    }
-
-    // Update the student's resume field
-    student.resume = resume;
-
-    // Save the updated student document
-    await student.save();
-
-    // Return a success response
+    const student = await prisma.student.update({
+      where: { userId },
+      data: { resume },
+    });
     return NextResponse.json({
       message: 'Student resume stored successfully',
       success: true,

@@ -1,10 +1,21 @@
 "use client";
 
-import React , {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-const IsActiveApplicantsCard = ({ applicants , listingId }) => {
+const IsActiveApplicantsCard = ({ applications, listingId }) => {
+  console.log('[IsActiveApplicantsCard] applications:', applications);
   const [hiddenCards, setHiddenCards] = useState([]);
+
+  // Filter for accepted applicants
+  const applicants = (applications || []).filter(app => app.status === 'ACCEPTED');
+  console.log('[IsActiveApplicantsCard] accepted applicants:', applicants);
+  console.log('[IsActiveApplicantsCard] hiddenCards:', hiddenCards);
+
+  // Reset hiddenCards when applications change
+  useEffect(() => {
+    setHiddenCards([]);
+  }, [applications]);
 
   const hideCard = (index) => {
     setHiddenCards([...hiddenCards, index]);
@@ -21,15 +32,17 @@ const IsActiveApplicantsCard = ({ applicants , listingId }) => {
   }
 
   async function rejectAcceptedStudent(index) {
-    const object = {student_id : applicants[index]?.student_id, student_name : applicants[index]?.student_name, student_college : applicants[index]?.student_college, student_email : applicants[index]?.student_email, student_phoneNumber : applicants[index]?.student_phoneNumber, listingId : listingId};
+    const object = {
+      student_id: applicants[index]?.student_id,
+      listingId: listingId
+    };
     const result = await fetch(`/api/rejectAcceptedStudent`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(object),
-    }, { cache: 'no-store' });
-    console.log(result)
+    });
     hideCard(index);
     return result.json();
   }
@@ -43,15 +56,13 @@ const IsActiveApplicantsCard = ({ applicants , listingId }) => {
             <h2 className="card-title">{applicant.student_name}</h2> 
             <p>{applicant.student_college}</p>
             <p>{applicant.student_email}</p>
-            <p>{applicant.student_phoneNumber}</p>
-
+            <p>{applicant.student_phone}</p>
             <div className="card-actions justify-between">
              <button className="btn bg-red-200" onClick={()=>rejectAcceptedStudent(index)}>Terminate</button>
             </div>
             <Link href={`/startupDashboard/${applicant.student_id}`} target="_blank">
              <button className="btn btn-secondary-content w-full">View</button>
             </Link>
-
           </div>
         </div> 
         )

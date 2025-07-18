@@ -5,6 +5,8 @@ import Stats from '../components/startup/statsSt';
 import StartupNavbar from '../components/startup/startupNavbar';
 import ListingsCard from '../components/startup/listingsCard';
 import Link from 'next/link'
+import ApplicantsCard from '../components/startup/applicantsCard';
+import IsActiveApplicantsCard from '../components/startup/isActiveApplicantsCard';
 
 export const metadata = {
   title: 'Startup Dashboard',
@@ -44,6 +46,12 @@ const StartupDB = async  () => {
 
 
   const listings = await getListings()
+  console.log('[startupDashboard] listings:', listings);
+  if (listings.data) {
+    listings.data.forEach((listing, idx) => {
+      console.log(`[startupDashboard] Listing ${idx} (${listing.lname}): applications:`, listing.applications);
+    });
+  }
 
 
   return (
@@ -61,7 +69,7 @@ const StartupDB = async  () => {
           </div>
           <div className=' bg-[#c8edfd] lg:col-span-4 m-2 ml-5 lg:ml-0 mr-5 rounded-box overflow-y-scroll'>
             <p  className=' font-bold text0-2xl p-4  '>Current Openings</p>
-            <ListingsCard listings={listings.data}/>
+            <ListingsCard listings={listings.data} />
           </div>
           <div className=' lg:col-span-3 bg-[#f0f0f0] ml-5 m-2 rounded-box'>
             <p  className=' font-bold text0-2xl p-4  '>Project directory ( recent job roles in the company)</p>

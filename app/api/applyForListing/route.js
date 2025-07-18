@@ -1,80 +1,64 @@
-// pages/api/applyToListing.js
-
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/app/utils/database/connect';
-import { startupAll } from '@/app/utils/database/models/startups/startupAll';
-import { studentAll } from '@/app/utils/database/models/student/studentAll';
+import prisma from '@/app/utils/database/prismaClient';
 
+// POST: Student applies for a listing
 export async function POST(request) {
   try {
-    connectDB();
-
-    const { userId, startupId, listingId, studentName, studentPhoneNumber, studentEmail, studentCollege } = await request.json();
+    const { userId, listingId, studentName, studentPhoneNumber, studentEmail, studentCollege, coverLetter } = await request.json();
+    console.log('[applyForListing] Request:', { userId, listingId, studentName, studentPhoneNumber, studentEmail, studentCollege, coverLetter });
 
     // Find the student in the database using the userId
-    const student = await studentAll.findOne({ userId });
-
-    // Find the startup by userId
-    const startup = await startupAll.findOne({ userId: startupId });
-
-    if (!student || !startup) {
-      return NextResponse.json({
-        message: 'Student or startup not found',
-        success: false,
-      });
+    const student = await prisma.student.findUnique({ where: { userId } });
+    console.log('[applyForListing] Found student:', student);
+    if (!student) {
+      console.log('[applyForListing] Student not found');
+      return NextResponse.json({ message: 'Student not found', success: false });
     }
-
-    // Find the listing in the startup's listings array by listingId
-    const listing = startup.listings.find((listing) => listing._id.toString() === listingId);
-
+    // Find the listing
+    const listing = await prisma.listing.findUnique({ where: { id: Number(listingId) } });
+    console.log('[applyForListing] Found listing:', listing);
     if (!listing) {
-      return NextResponse.json({
-        message: 'Listing not found',
-        success: false,
-      });
+      console.log('[applyForListing] Listing not found');
+      return NextResponse.json({ message: 'Listing not found', success: false });
     }
-
-    // Create the applicant object
-    const applicant = {
-      student_id: userId,
-      student_name: studentName,
-      student_email: studentEmail,
-      student_college: studentCollege,
-      student_phoneNumber: studentPhoneNumber,
-    };
-
-    // Push the applicant object to the listing's applicants array
-    listing.applicants.push(applicant);
-
-    // Save the updated startup
-    await startup.save();
-
-    // Check if the listing is already present in the student's listings array
-    const isListingPresent = student.listings.some((studentListing) => studentListing.listingId === listingId);
-
-    // If the listing is not present, add it to the student's listings array
-    if (!isListingPresent) {
-      student.listings.push({
-        listingId,
-        startupId: startup.userId,
-        listingName: listing.lname, // Assuming the name is stored in 'lname'
-        startupName: startup.name,
-        status: 0,
-      });
-
-      // Save the updated student document
-      await student.save();
-    }
-
-    return NextResponse.json({
-      message: 'Application submitted successfully',
-      success: true,
+    // Check for duplicate application
+    const existing = await prisma.application.findUnique({
+      where: {
+        student_id_listingId: {
+          student_id: userId,
+          listingId: listing.id,
+        },
+      },
     });
+    console.log('[applyForListing] Existing application:', existing);
+    if (existing) {
+      console.log('[applyForListing] Duplicate application');
+      return NextResponse.json({ message: 'You have already applied for this listing', success: false });
+    }
+    // Create the application with status PENDING
+    const application = await prisma.application.create({
+      data: {
+        student_id: userId,
+        student_name: studentName,
+        student_email: studentEmail,
+        student_phone: studentPhoneNumber,
+        student_college: studentCollege,
+        status: 'PENDING',
+        coverLetter: coverLetter || null,
+        listingId: listing.id,
+        studentDbId: student.id,
+      },
+    });
+    console.log('[applyForListing] Created application:', application);
+    return NextResponse.json({ message: 'Application submitted successfully', success: true, applicationId: application.id });
   } catch (error) {
-    console.error('Error:', error.message);
-    return NextResponse.json({
-      message: error.message,
-      success: false,
-    });
+    console.error('[applyForListing] Error:', error);
+    return NextResponse.json({ message: error.message, success: false });
   }
 }
+
+// ---
+// FRONTEND CHANGES NEEDED:
+// - Send { userId, listingId, studentName, studentPhoneNumber, studentEmail, studentCollege, coverLetter? } in the POST body.
+// - On success, check for { success: true, applicationId } in the response.
+// - On duplicate, check for { success: false, message: 'You have already applied for this listing' }.

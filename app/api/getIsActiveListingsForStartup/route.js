@@ -1,29 +1,30 @@
 // Import necessary dependencies and models
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/app/utils/database/connect';
-import { startupAll } from '@/app/utils/database/models/startups/startupAll';
+import prisma from '@/app/utils/database/prismaClient';
 
 export async function POST(request) {
   try {
-    // Connect to the database
-    connectDB();
-
-    // Get the userId from the request body
     const { userId } = await request.json();
-
-    // Find the startup in the database using the userId
-    const startup = await startupAll.findOne({ userId });
+    console.log('[getIsActiveListingsForStartup] Request:', { userId });
+    const startup = await prisma.startup.findUnique({
+      where: { userId },
+      include: { listings: { include: { applications: true } } },
+    });
+    console.log('[getIsActiveListingsForStartup] Found startup:', startup);
     if (!startup) {
-      return NextResponse.error(new Error('Startup not found'), { status: 404 });
+      console.log('[getIsActiveListingsForStartup] Startup not found');
+      return NextResponse.json({ message: 'Startup not found' }, { status: 404 });
     }
-
-    // Filter the listings where isActive is 1
-    const activeListings = startup.listings.filter(listing => listing.isActive === 1);
-
-    // Return the active listings
-    return NextResponse.json(activeListings, { status: 200 });
+    console.log('[getIsActiveListingsForStartup] All listings:', startup.listings);
+    startup.listings.forEach((listing, idx) => {
+      console.log(`[getIsActiveListingsForStartup] Listing ${idx} (${listing.lname}): applications:`, listing.applications);
+    });
+    // Use isActive === true for boolean
+    const activeListings = startup.listings.filter(listing => listing.isActive === true);
+    console.log('[getIsActiveListingsForStartup] Active listings:', activeListings);
+    return NextResponse.json({ listings: activeListings }, { status: 200 });
   } catch (error) {
-    console.error(error);
-    return NextResponse.error(new Error('Internal Server Error'), { status: 500 });
+    console.error('[getIsActiveListingsForStartup] Error:', error);
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }

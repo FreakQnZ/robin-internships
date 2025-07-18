@@ -3,15 +3,15 @@ import React from 'react';
 const ListingStatus = ({ companyName, listingName, status }) => {
   let message = "pending";
   let colour = "#b2b4b3";
-  if(status == 0){
+  if(status === "PENDING"){
     message = "pending";
     colour = "#b2b4b3";
   }
-  if(status == 1){
+  if(status === "ACCEPTED"){
     message = "accepted";
     colour = "#89f483";
   }
-  if(status == 2){
+  if(status === "REJECTED"){
     message = "rejected";
     colour = "#f44d48";
   }

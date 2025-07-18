@@ -1,31 +1,30 @@
 import { NextResponse } from 'next/server';
-import { userAll } from '../../utils/database/models/allusers/userall';
-import { connectDB } from '@/app/utils/database/connect';
-import { startupAll } from '@/app/utils/database/models/startups/startupAll';
+import prisma from '@/app/utils/database/prismaClient';
 
 export async function POST(request) {
   try {
-    connectDB();
+    const { userId, name, desc, email, domain, phno, insta, linkedin, imgURL } = await request.json();
 
-    const { userId, name, desc, email, domain, phno, insta, linkedin , imgURL } = await request.json();
-
-    await userAll.create({
-      userId,
-      role: 'startup',
+    await prisma.userAll.create({
+      data: {
+        userId,
+        role: 'startup',
+      },
     });
 
-    await startupAll.create({
-      userId,
-      name,
-      email,
-      desc,
-      domain,
-      phno,
-      insta,
-      linkedin,
-      imgURL,
-      listings: [],
-      activeListings : [],
+    await prisma.startup.create({
+      data: {
+        userId,
+        name,
+        email,
+        desc,
+        domain,
+        phno,
+        insta,
+        linkedin,
+        imgURL,
+        // listings will be empty by default
+      },
     });
 
     return NextResponse.json({
@@ -33,6 +32,7 @@ export async function POST(request) {
       success: true,
     });
   } catch (error) {
+    console.error('Error in /api/newStartup:', error);
     return NextResponse.json({
       message: error.message,
       success: false,

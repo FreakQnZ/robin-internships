@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  student
+  startup
+}
+
+enum ApplicationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+model UserAll {
+  id     Int    @id @default(autoincrement())
+  userId String @unique
+  role   Role
+}
+
+model Student {
+  id               Int               @id @default(autoincrement())
+  userId           String            @unique
+  firstName        String
+  lastName         String
+  age              Int
+  gender           String
+  phoneNumber      String
+  course           String
+  Domains          String
+  yearOfGraduation Int
+  email            String            @unique
+  college          String
+  resume           String?           // Made optional
+  portfolio        String?           // Made optional
+  imgURL           String?           // Made optional
+  
+  // Relations
+  Lors             Lor[]
+  studentListings  StudentListing[]
+  applications     Application[]     // New relation to applications
+  
+  // Timestamps (optional - you can remove these if not needed)
+  createdAt        DateTime?         @default(now())
+  updatedAt        DateTime?         @updatedAt
+}
+
+model Lor {
+  id        Int     @id @default(autoincrement())
+  lorLink   String
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId Int
+  
+  createdAt DateTime? @default(now())
+}
+
+model StudentListing {
+  id           Int     @id @default(autoincrement())
+  startupId    String
+  startupName  String
+  listingId    String
+  listingName  String
+  status       Int     @default(0)
+  student      Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  studentId    Int
+  
+  createdAt    DateTime? @default(now())
+}
+
+model Startup {
+  id        Int       @id @default(autoincrement())
+  userId    String    @unique
+  name      String
+  email     String    @unique
+  desc      String
+  domain    String
+  phno      String
+  insta     String?   // Made optional
+  linkedin  String?   // Made optional
+  imgURL    String?   // Made optional
+  
+  // Relations
+  listings  Listing[]
+  
+  // Timestamps (optional)
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model Listing {
+  id              Int           @id @default(autoincrement())
+  lname           String
+  domain          String?
+  stipend         Int           @default(0)
+  duration        String
+  description     String?
+  requirements    String
+  email           String
+  internsRequired Int
+  isActive        Boolean       @default(true)    // Changed from Int to Boolean
+  
+  // Relations
+  startup         Startup       @relation(fields: [startupId], references: [id], onDelete: Cascade)
+  startupId       Int
+  applications    Application[] // Simplified - single relation
+  
+  // Timestamps (optional)
+  createdAt       DateTime?     @default(now())
+  updatedAt       DateTime?     @updatedAt
+}
+
+model Application {
+  id              Int               @id @default(autoincrement())
+  student_id      String            // Keep your original field name
+  student_name    String            // Keep your original field name
+  student_email   String            // Keep your original field name
+  student_phone   String            // Keep your original field name
+  student_college String            // Keep your original field name
+  status          ApplicationStatus @default(PENDING)  // New status field
+  coverLetter     String?           // Optional cover letter
+  
+  // Relations - SIMPLIFIED to single relation
+  listing         Listing           @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listingId       Int
+  student         Student?          @relation(fields: [studentDbId], references: [id], onDelete: Cascade)
+  studentDbId     Int?              // Optional relation to Student model
+  
+  // Timestamps
+  appliedAt       DateTime?         @default(now())
+  reviewedAt      DateTime?         // When the application was reviewed
+  updatedAt       DateTime?         @updatedAt
+  
+  // Prevent duplicate applications
+  @@unique([student_id, listingId])
+}

@@ -115,7 +115,7 @@ const Page = () => {
 
   return (
     <div className=' flex flex-col items-center h-full'>
-    {isUserVerified?.success !== true ? (
+    {/* {isUserVerified?.success !== true ? ( */}
       <>
             <div className="navbar bg-blue-200">
               <a className="btn btn-ghost text-2xl">Student Onboarding</a>
@@ -202,7 +202,7 @@ const Page = () => {
             <button type="submit" className=" btn">Submit</button>
           </form>
         </>
-          ):(<h1>Already Logged In</h1>)}
+          {/* // ):(<h1>Already Logged In</h1>)} */}
       </div>
       
   

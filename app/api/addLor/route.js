@@ -1,31 +1,22 @@
 import { NextResponse } from 'next/server';
-import { studentAll } from '@/app/utils/database/models/student/studentAll';
-import { connectDB } from '@/app/utils/database/connect';
+import prisma from '@/app/utils/database/prismaClient';
 
 export async function POST(request) {
   try {
-    connectDB();
-
     const { userId, Lor } = await request.json();
-
-    // Find the student in the database using the userId
-    const student = await studentAll.findOne({ userId });
-
+    const student = await prisma.student.findUnique({ where: { userId } });
     if (!student) {
-      // If student not found, return an appropriate response
       return NextResponse.json({
         message: 'Student not found',
         success: false,
       });
     }
-
-    // Add the new Lor to the student's Lor array
-    student.Lor.push({lorLink : Lor});
-
-    // Save the updated student document
-    await student.save();
-
-    // Return a success response
+    await prisma.lor.create({
+      data: {
+        lorLink: Lor,
+        studentId: student.id,
+      },
+    });
     return NextResponse.json({
       message: 'Student Lor stored successfully',
       success: true,
